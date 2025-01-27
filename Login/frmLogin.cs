@@ -46,7 +46,12 @@ namespace Login
             L.Username = txtNaam.Text;
             L.Password = txtWachtwoord.Text;
 
+            //gebruiker registreren
             LoginDA.Register(L);
+
+            //velden leegmaken
+            txtNaam.Clear();
+            txtWachtwoord.Clear();
         }
 
         private void btnVerwijder_Click(object sender, EventArgs e)
@@ -62,6 +67,10 @@ namespace Login
             if (blnLogin == true)
             {
                 LoginDA.Remove(L);
+
+                //velden leegmaken
+                txtNaam.Clear();
+                txtWachtwoord.Clear();
             }
         }
 
@@ -77,16 +86,19 @@ namespace Login
 
             if (blnLogin == true)
             {
+                //inputbox weergeven voor nieuw wachtwoord
                 string strNewPass = Interaction.InputBox("Geef een nieuw wachtwoord in!", "Nieuw wachtwoord");
 
+                //wachtwoord veranderen
                 L.Password = strNewPass;
 
-                //inputbox weergeven voor nieuw wachtwoord
+
+                //wachtwoord updaten
                 LoginDA.UpdatePassword(L);
-            }
-            else
-            {
-                MessageBox.Show("Gebruiker bestaat niet", "Foutmelding");
+
+                //velden leegmaken
+                txtNaam.Clear();
+                txtWachtwoord.Clear();
             }
         }
     }

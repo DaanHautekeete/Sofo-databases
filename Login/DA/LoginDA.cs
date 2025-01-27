@@ -36,7 +36,7 @@ namespace Login.DA
             sqlCmd.Parameters.AddWithValue("@Username", L.Username);
             sqlCmd.Parameters.AddWithValue("@Password", L.Password);
 
-            //nu moeten we nog controleren of de gebruikersnaam en wachtwoord juist zin
+            //nu moeten we nog controleren of de gebruikersnaam en wachtwoord juist zijn
             //ofdat als we tellen (zie query) ofdat dat 1 is
             int count  = Convert.ToInt32(sqlCmd.ExecuteScalar());
             //Excutescalar= om je commando uitvoeren als je 1 gegevens uit de databank wil halen
@@ -63,20 +63,40 @@ namespace Login.DA
             //eerst verbinding maken met de databank
             MySqlConnection conn = Database.MaakVerbinding();
 
-            String query = "INSERT INTO login.tbllogin(Username,Password) VALUES (@Username, @Password)";
+            //we gaan tellen hoeveel records overeen komen met de gebruikersnaam
+            //en wachtwoord --> als letterlijke tekst
+            String query = "SELECT COUNT(1) from login.tbllogin WHERE Username=@Username";
 
             //commando maken
-            MySqlCommand sqlCmd = new MySqlCommand(query, conn);
-            sqlCmd.CommandType = System.Data.CommandType.Text;
+            MySqlCommand sqlCmdCheckUsers = new MySqlCommand(query, conn);
+            sqlCmdCheckUsers.CommandType = System.Data.CommandType.Text;
+            sqlCmdCheckUsers.Parameters.AddWithValue("@Username", L.Username);
 
-            //parameters toevoegen!!!!!
-            sqlCmd.Parameters.AddWithValue("@Username", L.Username);
-            sqlCmd.Parameters.AddWithValue("@Password", L.Password);
 
-            //commando uitvoeren
-            sqlCmd.ExecuteNonQuery();
+            int count = Convert.ToInt32(sqlCmdCheckUsers.ExecuteScalar());
 
-            MessageBox.Show("Registratie gelukt", "Registratie ok!");
+            if(count != 1)
+            {
+
+                String queryInsert = "INSERT INTO login.tbllogin(Username,Password) VALUES (@Username, @Password)";
+
+                //commando maken
+                MySqlCommand sqlCmdInsert = new MySqlCommand(queryInsert, conn);
+                sqlCmdInsert.CommandType = System.Data.CommandType.Text;
+
+                //parameters toevoegen!!!!!
+                sqlCmdInsert.Parameters.AddWithValue("@Username", L.Username);
+                sqlCmdInsert.Parameters.AddWithValue("@Password", L.Password);
+
+                //commando uitvoeren
+                sqlCmdInsert.ExecuteNonQuery();
+
+                MessageBox.Show("Registratie gelukt", "Registratie ok!");
+            }
+            else
+            {
+                MessageBox.Show("Gebruiker bestaat al", "Bestaande gebruiker");
+            }
             conn.Close();
         }
 
