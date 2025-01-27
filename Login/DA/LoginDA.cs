@@ -101,5 +101,29 @@ namespace Login.DA
             MessageBox.Show("Gebruiker verwijderd", "Succesvol verwijderd!");
             conn.Close();
         }
+
+        public static void UpdatePassword(Model.Login L)
+        {
+            //verbinding maken met databank
+            MySqlConnection conn = Database.MaakVerbinding();
+
+            //query maken
+            string query = "UPDATE login.tbllogin SET Password = @Password WHERE Username = @Username";
+
+            //commando maken
+            MySqlCommand mySqlCommand = new MySqlCommand(query, conn);
+            mySqlCommand.CommandType = System.Data.CommandType.Text;
+
+            //parameters toevoegen
+            mySqlCommand.Parameters.AddWithValue("@Username", L.Username);
+            mySqlCommand.Parameters.AddWithValue("@Password", L.Password);
+
+            //commando uitvoeren
+            mySqlCommand.ExecuteNonQuery();
+
+            //messagebox tonen
+            MessageBox.Show("Wachtwoord gewijzigd", "Wachtwoord gewijzigd!");
+            conn.Close();
+        }
     }
 }

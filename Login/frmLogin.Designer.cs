@@ -35,6 +35,7 @@
             this.btnLogin = new System.Windows.Forms.Button();
             this.btnRegistreren = new System.Windows.Forms.Button();
             this.btnVerwijder = new System.Windows.Forms.Button();
+            this.btnUpdatePass = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -100,11 +101,22 @@
             this.btnVerwijder.UseVisualStyleBackColor = true;
             this.btnVerwijder.Click += new System.EventHandler(this.btnVerwijder_Click);
             // 
+            // btnUpdatePass
+            // 
+            this.btnUpdatePass.Location = new System.Drawing.Point(462, 188);
+            this.btnUpdatePass.Name = "btnUpdatePass";
+            this.btnUpdatePass.Size = new System.Drawing.Size(120, 23);
+            this.btnUpdatePass.TabIndex = 7;
+            this.btnUpdatePass.Text = "Update password";
+            this.btnUpdatePass.UseVisualStyleBackColor = true;
+            this.btnUpdatePass.Click += new System.EventHandler(this.btnUpdatePass_Click);
+            // 
             // frmLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btnUpdatePass);
             this.Controls.Add(this.btnVerwijder);
             this.Controls.Add(this.btnRegistreren);
             this.Controls.Add(this.btnLogin);
@@ -128,6 +140,7 @@
         private System.Windows.Forms.Button btnLogin;
         private System.Windows.Forms.Button btnRegistreren;
         private System.Windows.Forms.Button btnVerwijder;
+        private System.Windows.Forms.Button btnUpdatePass;
     }
 }
 
