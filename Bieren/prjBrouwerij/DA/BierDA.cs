@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -47,6 +48,128 @@ namespace prjBrouwerij.DA
             Database.SluitVerbinding(conn);
 
             return brouwerijen;
+        }
+
+
+        public static List<Bier> ophalenBieren (string Brouwerij)
+        {
+            //je geeft een parameter mee om de bieren van die geselecteerde brouwerij op te vragen
+            List<Bier> Bieren = new List<Bier>();
+
+            //welke sql code hebben we nodig om de gegevens op te vragen
+            string query = "SELECT * FROM bier WHERE brouwerij = @brouwerij";
+
+            //connectie maken
+            MySqlConnection conn = Database.MaakVerbinding();
+
+            //commando opmaken 
+            MySqlCommand cmd = new MySqlCommand(query, conn);
+
+            //parameter toevoegen
+            cmd.Parameters.AddWithValue("@brouwerij", Brouwerij);
+            cmd.CommandType = System.Data.CommandType.Text;
+
+            //Reader nodig om de gegevens te lezen want het zijn meerdere gegevens
+            MySqlDataReader reader = cmd.ExecuteReader();
+
+
+            //reader in onze list steken --> ieder item als een object
+            //IDatarecord gebruiken
+            while (reader.Read())
+            {
+                Bieren.Add(Create(reader));
+            }
+
+            reader.Close();
+            conn.Close();
+
+            return Bieren;
+
+        }
+
+        public static Bier Create(IDataRecord record)
+        {
+            return new Bier()
+            {
+                Biernaam = record["biernaam"].ToString(),
+                Brouwerij = record["brouwerij"].ToString(),
+                Kleur = record["kleur"].ToString(),
+                Alcohol = Convert.ToDecimal(record["alcohol"])
+            }; 
+        }
+
+        //bier kunnen verwijderen
+        public static void VerwijderBier(Bier bier)
+        {
+            //verbinding maken
+            MySqlConnection conn = Database.MaakVerbinding();
+
+            //query aanmaken
+            string query = "Delete from bier where biernaam = @biernaam";
+
+            //commando opmaken
+            MySqlCommand cmd = new MySqlCommand(query, conn);
+            cmd.CommandType= System.Data.CommandType.Text;
+
+
+            //parameters toevoegen
+            cmd.Parameters.AddWithValue("@biernaam", bier.Biernaam);
+
+            //commando uitvoeren
+            cmd.ExecuteNonQuery();
+
+            conn.Close();
+
+        }
+
+        public static void VoegBierToe(Bier bier)
+        {
+            //verbinding maken
+            MySqlConnection conn = Database.MaakVerbinding();
+
+            //query aanmaken
+            string query = "INSERT INTO `bier` ( `biernaam` , `brouwerij` , `kleur` , `alcohol` ) VALUES (@biernaam, @brouwerij, @kleur, @alcohol)";
+
+            //commando opmaken
+            MySqlCommand cmd = new MySqlCommand(query, conn);
+            cmd.CommandType = System.Data.CommandType.Text;
+
+
+            //parameters toevoegen
+            cmd.Parameters.AddWithValue("@biernaam", bier.Biernaam);
+            cmd.Parameters.AddWithValue("@brouwerij", bier.Brouwerij);
+            cmd.Parameters.AddWithValue("@kleur", bier.Kleur);
+            cmd.Parameters.AddWithValue("@alcohol", bier.Alcohol);
+
+            //commando uitvoeren
+            cmd.ExecuteNonQuery();
+
+            conn.Close();
+        }
+
+        public static void PasBierAan(Bier bier, string strOudeBiernaam)
+        {
+            //verbinding maken
+            MySqlConnection conn = Database.MaakVerbinding();
+
+            //query aanmaken
+            string query = "UPDATE `bier` SET `biernaam` = @biernaam, `brouwerij` = @brouwerij, `kleur` = @kleur, `alcohol` = @alcohol  WHERE `biernaam` = @OudeBiernaam";
+
+            //commando opmaken
+            MySqlCommand cmd = new MySqlCommand(query, conn);
+            cmd.CommandType = System.Data.CommandType.Text;
+
+            //parameters toevoegen
+            cmd.Parameters.AddWithValue("@biernaam", bier.Biernaam);
+            cmd.Parameters.AddWithValue("@brouwerij", bier.Brouwerij);
+            cmd.Parameters.AddWithValue("@kleur", bier.Kleur);
+            cmd.Parameters.AddWithValue("@alcohol", bier.Alcohol);
+            cmd.Parameters.AddWithValue("@OudeBiernaam", strOudeBiernaam);
+
+            //commando uitvoeren
+            cmd.ExecuteNonQuery();
+
+            conn.Close();
         }
     }
 }
