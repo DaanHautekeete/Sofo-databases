@@ -53,7 +53,7 @@ namespace prjBrouwerij
             }
 
             //kolommen resizen
-            lsvBier.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
+            lsvBier.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
 
         }
 
