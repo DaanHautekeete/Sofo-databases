@@ -47,13 +47,13 @@
             this.btnWijzig = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
             this.btnVerwijder = new System.Windows.Forms.Button();
-            this.listView2 = new System.Windows.Forms.ListView();
+            this.lsvWijnen = new System.Windows.Forms.ListView();
             this.Code = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Jaar = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Omschrijving = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Inhoud = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.ppf = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.PrijsPerFles = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.HoeveelheidPerVerpakking = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Voorraad = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.cmbCode = new System.Windows.Forms.ComboBox();
             this.txtCode = new System.Windows.Forms.TextBox();
@@ -83,6 +83,7 @@
             this.Adres,
             this.Postnr,
             this.Gemeente});
+            this.lsvLeveranciers.FullRowSelect = true;
             this.lsvLeveranciers.HideSelection = false;
             this.lsvLeveranciers.Location = new System.Drawing.Point(13, 13);
             this.lsvLeveranciers.Name = "lsvLeveranciers";
@@ -90,6 +91,7 @@
             this.lsvLeveranciers.TabIndex = 0;
             this.lsvLeveranciers.UseCompatibleStateImageBehavior = false;
             this.lsvLeveranciers.View = System.Windows.Forms.View.Details;
+            this.lsvLeveranciers.SelectedIndexChanged += new System.EventHandler(this.lsvLeveranciers_SelectedIndexChanged);
             // 
             // Lvnr
             // 
@@ -218,23 +220,25 @@
             this.btnVerwijder.Text = "Verwijder";
             this.btnVerwijder.UseVisualStyleBackColor = true;
             // 
-            // listView2
+            // lsvWijnen
             // 
-            this.listView2.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.lsvWijnen.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.Code,
             this.Jaar,
             this.Omschrijving,
             this.Inhoud,
             this.ppf,
-            this.PrijsPerFles,
+            this.HoeveelheidPerVerpakking,
             this.Voorraad});
-            this.listView2.HideSelection = false;
-            this.listView2.Location = new System.Drawing.Point(484, 46);
-            this.listView2.Name = "listView2";
-            this.listView2.Size = new System.Drawing.Size(552, 243);
-            this.listView2.TabIndex = 14;
-            this.listView2.UseCompatibleStateImageBehavior = false;
-            this.listView2.View = System.Windows.Forms.View.Details;
+            this.lsvWijnen.FullRowSelect = true;
+            this.lsvWijnen.HideSelection = false;
+            this.lsvWijnen.Location = new System.Drawing.Point(484, 46);
+            this.lsvWijnen.Name = "lsvWijnen";
+            this.lsvWijnen.Size = new System.Drawing.Size(552, 243);
+            this.lsvWijnen.TabIndex = 14;
+            this.lsvWijnen.UseCompatibleStateImageBehavior = false;
+            this.lsvWijnen.View = System.Windows.Forms.View.Details;
+            this.lsvWijnen.SelectedIndexChanged += new System.EventHandler(this.lsvWijnen_SelectedIndexChanged);
             // 
             // Code
             // 
@@ -256,9 +260,9 @@
             // 
             this.ppf.Text = "ppf";
             // 
-            // PrijsPerFles
+            // HoeveelheidPerVerpakking
             // 
-            this.PrijsPerFles.Text = "Prijs per fles";
+            this.HoeveelheidPerVerpakking.Text = "Hoeveelheid per verpakking";
             // 
             // Voorraad
             // 
@@ -266,6 +270,7 @@
             // 
             // cmbCode
             // 
+            this.cmbCode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbCode.FormattingEnabled = true;
             this.cmbCode.Items.AddRange(new object[] {
             "Code"});
@@ -436,7 +441,7 @@
             this.Controls.Add(this.txtCode);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.cmbCode);
-            this.Controls.Add(this.listView2);
+            this.Controls.Add(this.lsvWijnen);
             this.Controls.Add(this.btnVerwijder);
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.btnWijzig);
@@ -479,13 +484,13 @@
         private System.Windows.Forms.Button btnWijzig;
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.Button btnVerwijder;
-        private System.Windows.Forms.ListView listView2;
+        private System.Windows.Forms.ListView lsvWijnen;
         private System.Windows.Forms.ColumnHeader Code;
         private System.Windows.Forms.ColumnHeader Jaar;
         private System.Windows.Forms.ColumnHeader Omschrijving;
         private System.Windows.Forms.ColumnHeader Inhoud;
         private System.Windows.Forms.ColumnHeader ppf;
-        private System.Windows.Forms.ColumnHeader PrijsPerFles;
+        private System.Windows.Forms.ColumnHeader HoeveelheidPerVerpakking;
         private System.Windows.Forms.ColumnHeader Voorraad;
         private System.Windows.Forms.ComboBox cmbCode;
         private System.Windows.Forms.TextBox txtCode;
