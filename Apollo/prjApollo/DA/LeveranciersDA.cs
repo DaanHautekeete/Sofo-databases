@@ -78,6 +78,27 @@ namespace prjApollo.DA
             //commando uitvoeren
             cmd.ExecuteNonQuery();
 
+            conn.Close();
+
+        }
+
+        public static void RemoveRecord(Leveranciers leveranciers)
+        {
+            //connectie maken 
+            MySqlConnection conn = Database.Maakverbinding();
+
+            //query opstellen
+            string query = "DELETE FROM `tblleveranciers` WHERE leveranciernummer = @leveranciernummer";
+
+            MySqlCommand cmd = new MySqlCommand(query, conn);
+            cmd.CommandType = System.Data.CommandType.Text;
+
+            cmd.Parameters.AddWithValue("@leveranciernummer", leveranciers.Leveranciernummer);
+
+            //commando uitvoeren
+            cmd.ExecuteNonQuery ();
+
+            conn.Close();
         }
 
     }

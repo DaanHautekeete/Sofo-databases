@@ -113,6 +113,32 @@ namespace prjApollo
 
             //nieuwe gegevens van leveranciers inladen in listview
             vulListviewLeveranciers();
+
+            
+        }
+
+        private void btnVerwijder_Click(object sender, EventArgs e)
+        {
+            //nieuw object maken van leverancier
+            Leveranciers leverancier = new Leveranciers();
+
+            leverancier.Leveranciernummer = Convert.ToInt16(txtLevnr.Text);
+
+            //item verwijderen
+            DA.LeveranciersDA.RemoveRecord(leverancier);
+
+            //alles listviews resetten
+            lsvLeveranciers.Items.Clear();
+            lsvWijnen.Items.Clear();
+
+            //nieuwe gegevens van leveranciers inladen in listview
+            vulListviewLeveranciers();
+        }
+
+        //functie om alles te resetten
+        private void reset()
+        {
+
         }
     }
 }
