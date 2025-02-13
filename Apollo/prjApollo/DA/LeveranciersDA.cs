@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using MySql.Data.MySqlClient;
 using MySqlX.XDevAPI.CRUD;
 using System.Data;
+using prjApollo.Helper;
 
 namespace prjApollo.DA
 {
@@ -54,6 +55,30 @@ namespace prjApollo.DA
 
         }
 
+
+        public static void NewRecord(Leveranciers leverancier)
+        {
+            //connection maken met db
+            MySqlConnection conn = Database.Maakverbinding();
+
+            //query opmaken
+            string query = "INSERT INTO `tblleveranciers`(`leveranciernummer`, `firmanaam`, `adres`, `postnr`, `gemeente`) VALUES (@leveranciernummer,@firmanaam, @adres, @postnr,@gemeente)";
+
+            //commando opmaken
+            MySqlCommand cmd = new MySqlCommand( query, conn);
+            cmd.CommandType = System.Data.CommandType.Text;
+
+            //parameters toevoegen
+            cmd.Parameters.AddWithValue("@leveranciernummer", leverancier.Leveranciernummer);
+            cmd.Parameters.AddWithValue("@firmanaam", leverancier.Firmanaam);
+            cmd.Parameters.AddWithValue("@adres", leverancier.Adres);
+            cmd.Parameters.AddWithValue("@postnr", leverancier.Postnr);
+            cmd.Parameters.AddWithValue("@gemeente", leverancier.Gemeente);
+
+            //commando uitvoeren
+            cmd.ExecuteNonQuery();
+
+        }
 
     }
 }

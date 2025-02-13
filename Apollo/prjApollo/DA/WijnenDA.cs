@@ -11,7 +11,7 @@ namespace prjApollo.DA
 {
     public class WijnenDA
     {
-        public static List<Wijnen> OphalenWijnen()
+        public static List<Wijnen> OphalenWijnen(string Leveranciersnummer)
         {
             //nieuwe lijst aanmaken
             List<Wijnen> Wijnen = new List<Wijnen>();
@@ -20,11 +20,11 @@ namespace prjApollo.DA
             MySqlConnection conn = Helper.Database.Maakverbinding();
 
             //query aanmaken
-            string query = "SELECT `Code` , `Jaar` , `Naam` , `Omschrijving` , `Inhoud` , `PrijsPerFles` , `HoeveelheidPerVerpakking` , `Voorraad` FROM tblwijnen LEFT JOIN tblleveranciers ON (tblwijnen.Leveranciersnummer = tblleveranciers.leveranciernummer )";
+            string query = "SELECT `Code` , `Jaar` , `Naam` , `Omschrijving` , `Inhoud` , `PrijsPerFles` , `HoeveelheidPerVerpakking` , `Voorraad`\r\nFROM tblwijnen, tblleveranciers WHERE (@leveranciernummer = tblwijnen.leveranciersnummer = tblleveranciers.leveranciernummer)";
 
             //commande maken
             MySqlCommand cmd = new MySqlCommand(query, conn);
-
+            cmd.Parameters.AddWithValue("@leveranciernummer", Leveranciersnummer);
             //reader aanmaken
             MySqlDataReader dataReader = cmd.ExecuteReader();
 

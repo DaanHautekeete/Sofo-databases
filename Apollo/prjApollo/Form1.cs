@@ -36,6 +36,9 @@ namespace prjApollo
 
         private void lsvLeveranciers_SelectedIndexChanged(object sender, EventArgs e)
         {
+
+            lsvWijnen.Items.Clear();
+
             if(lsvLeveranciers.SelectedItems.Count == 0)
             {
                 return;
@@ -53,7 +56,7 @@ namespace prjApollo
 
 
             //andere listview vullen
-            foreach(Wijnen wijn in DA.WijnenDA.OphalenWijnen())
+            foreach(Wijnen wijn in DA.WijnenDA.OphalenWijnen(gekozenItem.Text))
             {
                 ListViewItem item = new ListViewItem(new string[] {wijn.Code, wijn.Jaar, wijn.Omschrijving, wijn.Inhoud, wijn.PrijsPerFles.ToString(), wijn.HoeveelheidPerVerpakking.ToString(), wijn.Voorraad.ToString() });
 
@@ -81,6 +84,35 @@ namespace prjApollo
             txtPrijsPerPak.Text = gekozenItem.SubItems[5].Text;
             txtVoorraad.Text = gekozenItem.SubItems[6].Text;
 
+        }
+
+        private void btnWijzig_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            //nieuw object maken van leverancier
+            Leveranciers leveranciers = new Leveranciers();
+
+            //eigenschappen instellen
+            leveranciers.Leveranciernummer = Convert.ToInt16(txtLevnr.Text);
+
+            leveranciers.Firmanaam = txtNaamFirma.Text;
+            leveranciers.Adres = txtAdres.Text;
+            leveranciers.Postnr = txtPostnr.Text;
+            leveranciers.Gemeente = txtGemeente.Text;
+
+            //record uitvoeren
+            DA.LeveranciersDA.NewRecord(leveranciers);
+
+            //alles listviews resetten
+            lsvLeveranciers.Items.Clear();
+            lsvWijnen.Items.Clear();
+
+            //nieuwe gegevens van leveranciers inladen in listview
+            vulListviewLeveranciers();
         }
     }
 }
