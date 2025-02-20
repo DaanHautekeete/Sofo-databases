@@ -61,12 +61,15 @@ namespace prjApollo
             //andere listview vullen
             foreach(Wijnen wijn in DA.WijnenDA.OphalenWijnen(gekozenItem.Text))
             {
-                ListViewItem item = new ListViewItem(new string[] { wijn.Code, wijn.Jaar, wijn.Naam, wijn.Omschrijving, wijn.Groepsnummer.ToString(), wijn.Inhoud, wijn.PrijsPerFles.ToString(), wijn.HoeveelheidPerVerpakking.ToString(), wijn.Voorraad.ToString(), wijn.InBestelling.ToString(), wijn.Bestelpunt.ToString(), wijn.UitAssortiment.ToString(), wijn.Leveranciersnummer.ToString()});
+                ListViewItem item = new ListViewItem(new string[] { wijn.Code, wijn.Jaar, wijn.Naam, wijn.Omschrijving, wijn.Groepsnummer.ToString(), wijn.Inhoud, wijn.PrijsPerFles.ToString(), wijn.HoeveelheidPerVerpakking.ToString(), wijn.Voorraad.ToString(), wijn.InBestelling.ToString(), wijn.Bestelpunt.ToString(), wijn.UitAssortiment.ToString(), wijn.Leveranciersnummer.ToString(), wijn.Foto.ToString()});
 
                 item.Tag = wijn;
 
                 lsvWijnen.Items.Add(item);
             }
+
+            //leveranciersnummer in textbox zetten van de wijn
+            txtLeveranciersNummer.Text = txtLevnr.Text;
         }
 
         private void btnWijzig_Click(object sender, EventArgs e)
@@ -131,7 +134,28 @@ namespace prjApollo
 
         private void btnWijnToevoegen_Click(object sender, EventArgs e)
         {
+            //object maken van wijn 
+            Wijnen wijn = new Wijnen();
+            wijn.Code = txtCode.Text;
+            wijn.Jaar = txtJaar.Text;
+            wijn.Naam = txtNaamWijn.Text;
+            wijn.Omschrijving = txtOmschrijving.Text;
+            wijn.Groepsnummer = Convert.ToInt16(txtGroepsnummer.Text);
+            wijn.Inhoud = txtInhoud.Text;
+            wijn.PrijsPerFles = Convert.ToInt16(txtPPF.Text);
+            wijn.HoeveelheidPerVerpakking = Convert.ToInt16(txtHoeveelheidPerVerpakking.Text);
+            wijn.Voorraad = Convert.ToInt16(txtVoorraad.Text);
+            wijn.InBestelling = Convert.ToInt16(txtInBestelling.Text);
+            wijn.Bestelpunt = Convert.ToInt16(txtBestelpunt.Text);
+            wijn.UitAssortiment = Convert.ToInt16(txtUitAssortiment.Text);
+            wijn.Leveranciersnummer = Convert.ToInt16(txtLeveranciersNummer.Text);
+            wijn.Foto = txtFoto.Text;
 
+            //toevoegen van wijn 
+            WijnenDA.ToevoegenWijn(wijn);
+
+            //alles resetten 
+            reset();
         }
 
         private void lsvWijnen_SelectedIndexChanged(object sender, EventArgs e)
@@ -157,6 +181,7 @@ namespace prjApollo
             txtBestelpunt.Text = gekozenItem.SubItems[10].Text;
             txtUitAssortiment.Text = gekozenItem.SubItems[11].Text;
             txtLeveranciersNummer.Text = gekozenItem.SubItems[12].Text;
+            txtFoto.Text = gekozenItem.SubItems[13].Text;
 
         }
 
@@ -171,6 +196,10 @@ namespace prjApollo
             //nieuwe gegevens van leveranciers inladen in listview
             vulListviewLeveranciers();
 
+        }
+
+        private void cmbCode_SelectedIndexChanged(object sender, EventArgs e)
+        {
         }
     }
 }

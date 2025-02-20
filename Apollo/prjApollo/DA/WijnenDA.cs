@@ -77,6 +77,23 @@ namespace prjApollo.DA
             cmd.Parameters.AddWithValue("@code", wijn.Code);
             cmd.Parameters.AddWithValue("@jaar", wijn.Jaar);
             cmd.Parameters.AddWithValue("@naam", wijn.Naam);
+            cmd.Parameters.AddWithValue("@omschrijving", wijn.Omschrijving);
+            cmd.Parameters.AddWithValue("@groepsnummer", wijn.Groepsnummer);
+            cmd.Parameters.AddWithValue("@inhoud", wijn.Inhoud);
+            cmd.Parameters.AddWithValue("@prijsPerFles", wijn.PrijsPerFles);
+            cmd.Parameters.AddWithValue("@HoeveelheidPerVerpakking", wijn.HoeveelheidPerVerpakking);
+            cmd.Parameters.AddWithValue("@voorraad", wijn.Voorraad);
+            cmd.Parameters.AddWithValue("@inbestelling", wijn.InBestelling);
+            cmd.Parameters.AddWithValue("@bestelpunt", wijn.Bestelpunt);
+            cmd.Parameters.AddWithValue("@uitAssortiment", wijn.UitAssortiment);
+            cmd.Parameters.AddWithValue("@leveranciersNummer", wijn.Leveranciersnummer);
+            cmd.Parameters.AddWithValue("@foto", wijn.Foto);
+
+            //commando uitvoeren
+            cmd.ExecuteNonQuery();
+
+            //connectie sluiten
+            conn.Close();
 
         }
     }

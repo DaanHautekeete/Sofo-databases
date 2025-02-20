@@ -91,6 +91,9 @@
             this.label17 = new System.Windows.Forms.Label();
             this.txtLeveranciersNummer = new System.Windows.Forms.TextBox();
             this.label18 = new System.Windows.Forms.Label();
+            this.Foto = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.txtFoto = new System.Windows.Forms.TextBox();
+            this.label19 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // lsvLeveranciers
@@ -256,7 +259,8 @@
             this.InBestelling,
             this.Bestelpunt,
             this.UitAssortiment,
-            this.Leveranciersnummer});
+            this.Leveranciersnummer,
+            this.Foto});
             this.lsvWijnen.FullRowSelect = true;
             this.lsvWijnen.HideSelection = false;
             this.lsvWijnen.Location = new System.Drawing.Point(484, 46);
@@ -300,11 +304,21 @@
             this.cmbCode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbCode.FormattingEnabled = true;
             this.cmbCode.Items.AddRange(new object[] {
-            "Code"});
-            this.cmbCode.Location = new System.Drawing.Point(692, 13);
+            "Code",
+            "Jaar",
+            "Groepsnummer",
+            "Prijs per fles",
+            "Hoeveelheid per verpakking",
+            "Voorraad",
+            "In bestelling",
+            "Bestelpunt",
+            "Uit assortiment",
+            "Leveranciersnummer"});
+            this.cmbCode.Location = new System.Drawing.Point(637, 12);
             this.cmbCode.Name = "cmbCode";
-            this.cmbCode.Size = new System.Drawing.Size(121, 21);
+            this.cmbCode.Size = new System.Drawing.Size(232, 21);
             this.cmbCode.TabIndex = 15;
+            this.cmbCode.SelectedIndexChanged += new System.EventHandler(this.cmbCode_SelectedIndexChanged);
             // 
             // txtCode
             // 
@@ -395,16 +409,15 @@
             // 
             // label11
             // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(716, 367);
+            this.label11.Location = new System.Drawing.Point(734, 348);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(141, 13);
+            this.label11.Size = new System.Drawing.Size(107, 37);
             this.label11.TabIndex = 26;
             this.label11.Text = "Hoeveelheid per verpakking";
             // 
             // txtVoorraad
             // 
-            this.txtVoorraad.Location = new System.Drawing.Point(876, 384);
+            this.txtVoorraad.Location = new System.Drawing.Point(857, 384);
             this.txtVoorraad.Name = "txtVoorraad";
             this.txtVoorraad.Size = new System.Drawing.Size(100, 20);
             this.txtVoorraad.TabIndex = 29;
@@ -412,7 +425,7 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(876, 367);
+            this.label12.Location = new System.Drawing.Point(857, 367);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(50, 13);
             this.label12.TabIndex = 28;
@@ -504,7 +517,7 @@
             // 
             // txtInBestelling
             // 
-            this.txtInBestelling.Location = new System.Drawing.Point(993, 384);
+            this.txtInBestelling.Location = new System.Drawing.Point(974, 384);
             this.txtInBestelling.Name = "txtInBestelling";
             this.txtInBestelling.Size = new System.Drawing.Size(100, 20);
             this.txtInBestelling.TabIndex = 37;
@@ -512,7 +525,7 @@
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(993, 367);
+            this.label15.Location = new System.Drawing.Point(974, 367);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(63, 13);
             this.label15.TabIndex = 36;
@@ -552,8 +565,10 @@
             // 
             // txtLeveranciersNummer
             // 
+            this.txtLeveranciersNummer.Enabled = false;
             this.txtLeveranciersNummer.Location = new System.Drawing.Point(734, 430);
             this.txtLeveranciersNummer.Name = "txtLeveranciersNummer";
+            this.txtLeveranciersNummer.ReadOnly = true;
             this.txtLeveranciersNummer.Size = new System.Drawing.Size(100, 20);
             this.txtLeveranciersNummer.TabIndex = 43;
             // 
@@ -566,11 +581,33 @@
             this.label18.TabIndex = 42;
             this.label18.Text = "Leveranciersnummer";
             // 
+            // Foto
+            // 
+            this.Foto.Text = "Foto";
+            // 
+            // txtFoto
+            // 
+            this.txtFoto.Location = new System.Drawing.Point(857, 430);
+            this.txtFoto.Name = "txtFoto";
+            this.txtFoto.Size = new System.Drawing.Size(100, 20);
+            this.txtFoto.TabIndex = 45;
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(857, 413);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(28, 13);
+            this.label19.TabIndex = 44;
+            this.label19.Text = "Foto";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1095, 508);
+            this.Controls.Add(this.txtFoto);
+            this.Controls.Add(this.label19);
             this.Controls.Add(this.txtLeveranciersNummer);
             this.Controls.Add(this.label18);
             this.Controls.Add(this.txtUitAssortiment);
@@ -688,6 +725,9 @@
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.TextBox txtLeveranciersNummer;
         private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.ColumnHeader Foto;
+        private System.Windows.Forms.TextBox txtFoto;
+        private System.Windows.Forms.Label label19;
     }
 }
 
