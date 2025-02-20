@@ -88,7 +88,23 @@ namespace prjApollo
 
         private void btnWijzig_Click(object sender, EventArgs e)
         {
+            //nieuw object maken van leverancier
+            Leveranciers leverancier = new Leveranciers();
 
+            //eigenschappen aanpassen
+            leverancier.Leveranciernummer = Convert.ToInt16(txtLevnr.Text);
+            leverancier.Firmanaam = txtNaamFirma.Text;
+            leverancier.Adres = txtAdres.Text;
+            leverancier.Postnr = txtPostnr.Text;
+            leverancier.Gemeente = txtGemeente.Text;
+
+            //levernr van geselecteerde item ophalen
+            ListViewItem gekozenItem = lsvLeveranciers.SelectedItems[0];
+
+            LeveranciersDA.EditRecord(leverancier, gekozenItem.Text);
+
+            //reset
+            reset();
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -107,12 +123,8 @@ namespace prjApollo
             //record uitvoeren
             DA.LeveranciersDA.NewRecord(leveranciers);
 
-            //alles listviews resetten
-            lsvLeveranciers.Items.Clear();
-            lsvWijnen.Items.Clear();
-
-            //nieuwe gegevens van leveranciers inladen in listview
-            vulListviewLeveranciers();
+            //reset 
+            reset();
 
             
         }
@@ -127,17 +139,19 @@ namespace prjApollo
             //item verwijderen
             DA.LeveranciersDA.RemoveRecord(leverancier);
 
+            //alles resetten
+            reset();
+        }
+
+        //functie om alles te resetten
+        private void reset()
+        {
             //alles listviews resetten
             lsvLeveranciers.Items.Clear();
             lsvWijnen.Items.Clear();
 
             //nieuwe gegevens van leveranciers inladen in listview
             vulListviewLeveranciers();
-        }
-
-        //functie om alles te resetten
-        private void reset()
-        {
 
         }
     }

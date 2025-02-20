@@ -101,5 +101,28 @@ namespace prjApollo.DA
             conn.Close();
         }
 
+        public static void EditRecord(Leveranciers leveranciers, string oudLeveranciersnummer)
+        {
+            //connectie maken 
+            MySqlConnection conn = Database.Maakverbinding();
+
+            //query opstellen
+            string query = "UPDATE `tblleveranciers` SET `leveranciernummer`=@leveranciersnummer,`firmanaam`=@firmaNaam,`adres`=@adres,`postnr`=@postnr,`gemeente`=@gemeente WHERE leveranciernummer = @oudleveranciersnummer";
+
+            MySqlCommand cmd = new MySqlCommand(query, conn);
+            cmd.CommandType = System.Data.CommandType.Text;
+
+            cmd.Parameters.AddWithValue("@leveranciersnummer", leveranciers.Leveranciernummer);
+            cmd.Parameters.AddWithValue("@firmaNaam", leveranciers.Firmanaam);
+            cmd.Parameters.AddWithValue("@adres", leveranciers.Adres);
+            cmd.Parameters.AddWithValue("@postnr", leveranciers.Postnr);
+            cmd.Parameters.AddWithValue("@gemeente", leveranciers.Gemeente);
+            cmd.Parameters.AddWithValue("@oudleveranciersnummer", oudLeveranciersnummer);
+
+            //commando uitvoeren
+            cmd.ExecuteNonQuery();
+
+            conn.Close();
+        }
     }
 }
