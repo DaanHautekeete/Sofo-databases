@@ -19,6 +19,10 @@ namespace prjApollo.Model
         public int Voorraad { get; set; }
         public int InBestelling { get; set; }
         public int Bestelpunt { get; set; }
+
+        public int UitAssortiment { get; set; }
         public int Leveranciersnummer { get; set; }
+
+        public string Foto { get; set; }
     }
 }

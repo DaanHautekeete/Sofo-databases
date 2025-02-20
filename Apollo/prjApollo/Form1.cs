@@ -6,6 +6,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -21,6 +22,8 @@ namespace prjApollo
             vulListviewLeveranciers();
             cmbCode.SelectedIndex = 0;
         }
+
+        //functies voor leveranciers
 
         private void vulListviewLeveranciers()
         {
@@ -58,32 +61,12 @@ namespace prjApollo
             //andere listview vullen
             foreach(Wijnen wijn in DA.WijnenDA.OphalenWijnen(gekozenItem.Text))
             {
-                ListViewItem item = new ListViewItem(new string[] {wijn.Code, wijn.Jaar, wijn.Omschrijving, wijn.Inhoud, wijn.PrijsPerFles.ToString(), wijn.HoeveelheidPerVerpakking.ToString(), wijn.Voorraad.ToString() });
+                ListViewItem item = new ListViewItem(new string[] { wijn.Code, wijn.Jaar, wijn.Naam, wijn.Omschrijving, wijn.Groepsnummer.ToString(), wijn.Inhoud, wijn.PrijsPerFles.ToString(), wijn.HoeveelheidPerVerpakking.ToString(), wijn.Voorraad.ToString(), wijn.InBestelling.ToString(), wijn.Bestelpunt.ToString(), wijn.UitAssortiment.ToString(), wijn.Leveranciersnummer.ToString()});
 
                 item.Tag = wijn;
 
                 lsvWijnen.Items.Add(item);
             }
-        }
-
-        private void lsvWijnen_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if(lsvWijnen.SelectedItems.Count == 0)
-            {
-                return;
-            }
-
-            ListViewItem gekozenItem = lsvWijnen.SelectedItems[0];
-
-            //textboxen aanpassen
-            txtCode.Text = gekozenItem.Text;
-            txtJaar.Text = gekozenItem.SubItems[1].Text;
-            txtOmschrijving.Text = gekozenItem.SubItems[2].Text;
-            txtInhoud.Text = gekozenItem.SubItems[3].Text;
-            txtPPF.Text = gekozenItem.SubItems[4].Text;
-            txtPrijsPerPak.Text = gekozenItem.SubItems[5].Text;
-            txtVoorraad.Text = gekozenItem.SubItems[6].Text;
-
         }
 
         private void btnWijzig_Click(object sender, EventArgs e)
@@ -142,6 +125,41 @@ namespace prjApollo
             //alles resetten
             reset();
         }
+
+
+        //functies voor wijnen
+
+        private void btnWijnToevoegen_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lsvWijnen_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (lsvWijnen.SelectedItems.Count == 0)
+            {
+                return;
+            }
+
+            ListViewItem gekozenItem = lsvWijnen.SelectedItems[0];
+
+            //textboxen aanpassen
+            txtCode.Text = gekozenItem.Text;
+            txtJaar.Text = gekozenItem.SubItems[1].Text;
+            txtNaamWijn.Text = gekozenItem.SubItems[2].Text;
+            txtOmschrijving.Text = gekozenItem.SubItems[3].Text;
+            txtGroepsnummer.Text = gekozenItem.SubItems[4].Text;
+            txtInhoud.Text = gekozenItem.SubItems[5].Text;
+            txtPPF.Text = gekozenItem.SubItems[6].Text;
+            txtHoeveelheidPerVerpakking.Text = gekozenItem.SubItems[7].Text;
+            txtVoorraad.Text = gekozenItem.SubItems[8].Text;
+            txtInBestelling.Text = gekozenItem.SubItems[9].Text;
+            txtBestelpunt.Text = gekozenItem.SubItems[10].Text;
+            txtUitAssortiment.Text = gekozenItem.SubItems[11].Text;
+            txtLeveranciersNummer.Text = gekozenItem.SubItems[12].Text;
+
+        }
+
 
         //functie om alles te resetten
         private void reset()

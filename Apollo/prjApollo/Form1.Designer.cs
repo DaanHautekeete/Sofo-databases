@@ -66,13 +66,31 @@
             this.label9 = new System.Windows.Forms.Label();
             this.txtPPF = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
-            this.txtPrijsPerPak = new System.Windows.Forms.TextBox();
+            this.txtHoeveelheidPerVerpakking = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
             this.txtVoorraad = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
             this.btnWijzigWijnen = new System.Windows.Forms.Button();
             this.btnWijnToevoegen = new System.Windows.Forms.Button();
             this.btnVerwijderWijn = new System.Windows.Forms.Button();
+            this.Naam = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Groepsnummer = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.InBestelling = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Bestelpunt = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.UitAssortiment = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Leveranciersnummer = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.txtNaamWijn = new System.Windows.Forms.TextBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.txtGroepsnummer = new System.Windows.Forms.TextBox();
+            this.label14 = new System.Windows.Forms.Label();
+            this.txtInBestelling = new System.Windows.Forms.TextBox();
+            this.label15 = new System.Windows.Forms.Label();
+            this.txtBestelpunt = new System.Windows.Forms.TextBox();
+            this.label16 = new System.Windows.Forms.Label();
+            this.txtUitAssortiment = new System.Windows.Forms.TextBox();
+            this.label17 = new System.Windows.Forms.Label();
+            this.txtLeveranciersNummer = new System.Windows.Forms.TextBox();
+            this.label18 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // lsvLeveranciers
@@ -195,7 +213,7 @@
             // 
             // btnWijzig
             // 
-            this.btnWijzig.Location = new System.Drawing.Point(13, 456);
+            this.btnWijzig.Location = new System.Drawing.Point(13, 476);
             this.btnWijzig.Name = "btnWijzig";
             this.btnWijzig.Size = new System.Drawing.Size(75, 23);
             this.btnWijzig.TabIndex = 11;
@@ -205,7 +223,7 @@
             // 
             // btnAdd
             // 
-            this.btnAdd.Location = new System.Drawing.Point(137, 456);
+            this.btnAdd.Location = new System.Drawing.Point(137, 476);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(75, 23);
             this.btnAdd.TabIndex = 12;
@@ -215,7 +233,7 @@
             // 
             // btnVerwijder
             // 
-            this.btnVerwijder.Location = new System.Drawing.Point(248, 456);
+            this.btnVerwijder.Location = new System.Drawing.Point(248, 476);
             this.btnVerwijder.Name = "btnVerwijder";
             this.btnVerwijder.Size = new System.Drawing.Size(75, 23);
             this.btnVerwijder.TabIndex = 13;
@@ -228,11 +246,17 @@
             this.lsvWijnen.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.Code,
             this.Jaar,
+            this.Naam,
             this.Omschrijving,
+            this.Groepsnummer,
             this.Inhoud,
             this.ppf,
             this.HoeveelheidPerVerpakking,
-            this.Voorraad});
+            this.Voorraad,
+            this.InBestelling,
+            this.Bestelpunt,
+            this.UitAssortiment,
+            this.Leveranciersnummer});
             this.lsvWijnen.FullRowSelect = true;
             this.lsvWijnen.HideSelection = false;
             this.lsvWijnen.Location = new System.Drawing.Point(484, 46);
@@ -261,7 +285,7 @@
             // 
             // ppf
             // 
-            this.ppf.Text = "ppf";
+            this.ppf.Text = "Prijs per fles";
             // 
             // HoeveelheidPerVerpakking
             // 
@@ -316,7 +340,7 @@
             // 
             // txtOmschrijving
             // 
-            this.txtOmschrijving.Location = new System.Drawing.Point(734, 325);
+            this.txtOmschrijving.Location = new System.Drawing.Point(857, 325);
             this.txtOmschrijving.Name = "txtOmschrijving";
             this.txtOmschrijving.Size = new System.Drawing.Size(100, 20);
             this.txtOmschrijving.TabIndex = 21;
@@ -324,7 +348,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(734, 308);
+            this.label8.Location = new System.Drawing.Point(857, 308);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(67, 13);
             this.label8.TabIndex = 20;
@@ -332,7 +356,7 @@
             // 
             // txtInhoud
             // 
-            this.txtInhoud.Location = new System.Drawing.Point(859, 325);
+            this.txtInhoud.Location = new System.Drawing.Point(484, 384);
             this.txtInhoud.Name = "txtInhoud";
             this.txtInhoud.Size = new System.Drawing.Size(100, 20);
             this.txtInhoud.TabIndex = 23;
@@ -340,7 +364,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(859, 308);
+            this.label9.Location = new System.Drawing.Point(484, 367);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(40, 13);
             this.label9.TabIndex = 22;
@@ -348,7 +372,7 @@
             // 
             // txtPPF
             // 
-            this.txtPPF.Location = new System.Drawing.Point(484, 384);
+            this.txtPPF.Location = new System.Drawing.Point(606, 384);
             this.txtPPF.Name = "txtPPF";
             this.txtPPF.Size = new System.Drawing.Size(100, 20);
             this.txtPPF.TabIndex = 25;
@@ -356,31 +380,31 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(484, 367);
+            this.label10.Location = new System.Drawing.Point(606, 367);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(22, 13);
             this.label10.TabIndex = 24;
             this.label10.Text = "ppf";
             // 
-            // txtPrijsPerPak
+            // txtHoeveelheidPerVerpakking
             // 
-            this.txtPrijsPerPak.Location = new System.Drawing.Point(606, 384);
-            this.txtPrijsPerPak.Name = "txtPrijsPerPak";
-            this.txtPrijsPerPak.Size = new System.Drawing.Size(100, 20);
-            this.txtPrijsPerPak.TabIndex = 27;
+            this.txtHoeveelheidPerVerpakking.Location = new System.Drawing.Point(734, 384);
+            this.txtHoeveelheidPerVerpakking.Name = "txtHoeveelheidPerVerpakking";
+            this.txtHoeveelheidPerVerpakking.Size = new System.Drawing.Size(100, 20);
+            this.txtHoeveelheidPerVerpakking.TabIndex = 27;
             // 
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(606, 367);
+            this.label11.Location = new System.Drawing.Point(716, 367);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(65, 13);
+            this.label11.Size = new System.Drawing.Size(141, 13);
             this.label11.TabIndex = 26;
-            this.label11.Text = "Prijs per pak";
+            this.label11.Text = "Hoeveelheid per verpakking";
             // 
             // txtVoorraad
             // 
-            this.txtVoorraad.Location = new System.Drawing.Point(734, 384);
+            this.txtVoorraad.Location = new System.Drawing.Point(876, 384);
             this.txtVoorraad.Name = "txtVoorraad";
             this.txtVoorraad.Size = new System.Drawing.Size(100, 20);
             this.txtVoorraad.TabIndex = 29;
@@ -388,7 +412,7 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(734, 367);
+            this.label12.Location = new System.Drawing.Point(876, 367);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(50, 13);
             this.label12.TabIndex = 28;
@@ -396,7 +420,7 @@
             // 
             // btnWijzigWijnen
             // 
-            this.btnWijzigWijnen.Location = new System.Drawing.Point(484, 456);
+            this.btnWijzigWijnen.Location = new System.Drawing.Point(484, 476);
             this.btnWijzigWijnen.Name = "btnWijzigWijnen";
             this.btnWijzigWijnen.Size = new System.Drawing.Size(100, 23);
             this.btnWijzigWijnen.TabIndex = 30;
@@ -405,33 +429,166 @@
             // 
             // btnWijnToevoegen
             // 
-            this.btnWijnToevoegen.Location = new System.Drawing.Point(606, 456);
+            this.btnWijnToevoegen.Location = new System.Drawing.Point(606, 476);
             this.btnWijnToevoegen.Name = "btnWijnToevoegen";
             this.btnWijnToevoegen.Size = new System.Drawing.Size(100, 23);
             this.btnWijnToevoegen.TabIndex = 31;
             this.btnWijnToevoegen.Text = "Wijn toevoegen";
             this.btnWijnToevoegen.UseVisualStyleBackColor = true;
+            this.btnWijnToevoegen.Click += new System.EventHandler(this.btnWijnToevoegen_Click);
             // 
             // btnVerwijderWijn
             // 
-            this.btnVerwijderWijn.Location = new System.Drawing.Point(734, 456);
+            this.btnVerwijderWijn.Location = new System.Drawing.Point(734, 476);
             this.btnVerwijderWijn.Name = "btnVerwijderWijn";
             this.btnVerwijderWijn.Size = new System.Drawing.Size(100, 23);
             this.btnVerwijderWijn.TabIndex = 31;
             this.btnVerwijderWijn.Text = "Verwijder wijn";
             this.btnVerwijderWijn.UseVisualStyleBackColor = true;
             // 
+            // Naam
+            // 
+            this.Naam.Text = "Naam";
+            // 
+            // Groepsnummer
+            // 
+            this.Groepsnummer.Text = "Groepsnummer";
+            // 
+            // InBestelling
+            // 
+            this.InBestelling.Text = "In bestelling";
+            // 
+            // Bestelpunt
+            // 
+            this.Bestelpunt.Text = "Bestelpunten";
+            // 
+            // UitAssortiment
+            // 
+            this.UitAssortiment.Text = "Uit assortiment";
+            // 
+            // Leveranciersnummer
+            // 
+            this.Leveranciersnummer.Text = "Leveranciersnummer";
+            // 
+            // txtNaamWijn
+            // 
+            this.txtNaamWijn.Location = new System.Drawing.Point(734, 325);
+            this.txtNaamWijn.Name = "txtNaamWijn";
+            this.txtNaamWijn.Size = new System.Drawing.Size(100, 20);
+            this.txtNaamWijn.TabIndex = 33;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(734, 308);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(35, 13);
+            this.label13.TabIndex = 32;
+            this.label13.Text = "Naam";
+            // 
+            // txtGroepsnummer
+            // 
+            this.txtGroepsnummer.Location = new System.Drawing.Point(973, 325);
+            this.txtGroepsnummer.Name = "txtGroepsnummer";
+            this.txtGroepsnummer.Size = new System.Drawing.Size(100, 20);
+            this.txtGroepsnummer.TabIndex = 35;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(973, 308);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(78, 13);
+            this.label14.TabIndex = 34;
+            this.label14.Text = "Groepsnummer";
+            // 
+            // txtInBestelling
+            // 
+            this.txtInBestelling.Location = new System.Drawing.Point(993, 384);
+            this.txtInBestelling.Name = "txtInBestelling";
+            this.txtInBestelling.Size = new System.Drawing.Size(100, 20);
+            this.txtInBestelling.TabIndex = 37;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(993, 367);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(63, 13);
+            this.label15.TabIndex = 36;
+            this.label15.Text = "In bestelling";
+            // 
+            // txtBestelpunt
+            // 
+            this.txtBestelpunt.Location = new System.Drawing.Point(484, 430);
+            this.txtBestelpunt.Name = "txtBestelpunt";
+            this.txtBestelpunt.Size = new System.Drawing.Size(100, 20);
+            this.txtBestelpunt.TabIndex = 39;
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(484, 413);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(57, 13);
+            this.label16.TabIndex = 38;
+            this.label16.Text = "Bestelpunt";
+            // 
+            // txtUitAssortiment
+            // 
+            this.txtUitAssortiment.Location = new System.Drawing.Point(606, 430);
+            this.txtUitAssortiment.Name = "txtUitAssortiment";
+            this.txtUitAssortiment.Size = new System.Drawing.Size(100, 20);
+            this.txtUitAssortiment.TabIndex = 41;
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(606, 413);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(76, 13);
+            this.label17.TabIndex = 40;
+            this.label17.Text = "Uit assortiment";
+            // 
+            // txtLeveranciersNummer
+            // 
+            this.txtLeveranciersNummer.Location = new System.Drawing.Point(734, 430);
+            this.txtLeveranciersNummer.Name = "txtLeveranciersNummer";
+            this.txtLeveranciersNummer.Size = new System.Drawing.Size(100, 20);
+            this.txtLeveranciersNummer.TabIndex = 43;
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(734, 413);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(105, 13);
+            this.label18.TabIndex = 42;
+            this.label18.Text = "Leveranciersnummer";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1095, 491);
+            this.ClientSize = new System.Drawing.Size(1095, 508);
+            this.Controls.Add(this.txtLeveranciersNummer);
+            this.Controls.Add(this.label18);
+            this.Controls.Add(this.txtUitAssortiment);
+            this.Controls.Add(this.label17);
+            this.Controls.Add(this.txtBestelpunt);
+            this.Controls.Add(this.label16);
+            this.Controls.Add(this.txtInBestelling);
+            this.Controls.Add(this.label15);
+            this.Controls.Add(this.txtGroepsnummer);
+            this.Controls.Add(this.label14);
+            this.Controls.Add(this.txtNaamWijn);
+            this.Controls.Add(this.label13);
             this.Controls.Add(this.btnVerwijderWijn);
             this.Controls.Add(this.btnWijnToevoegen);
             this.Controls.Add(this.btnWijzigWijnen);
             this.Controls.Add(this.txtVoorraad);
             this.Controls.Add(this.label12);
-            this.Controls.Add(this.txtPrijsPerPak);
+            this.Controls.Add(this.txtHoeveelheidPerVerpakking);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.txtPPF);
             this.Controls.Add(this.label10);
@@ -506,13 +663,31 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox txtPPF;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.TextBox txtPrijsPerPak;
+        private System.Windows.Forms.TextBox txtHoeveelheidPerVerpakking;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.TextBox txtVoorraad;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Button btnWijzigWijnen;
         private System.Windows.Forms.Button btnWijnToevoegen;
         private System.Windows.Forms.Button btnVerwijderWijn;
+        private System.Windows.Forms.ColumnHeader Naam;
+        private System.Windows.Forms.ColumnHeader Groepsnummer;
+        private System.Windows.Forms.ColumnHeader InBestelling;
+        private System.Windows.Forms.ColumnHeader Bestelpunt;
+        private System.Windows.Forms.ColumnHeader UitAssortiment;
+        private System.Windows.Forms.ColumnHeader Leveranciersnummer;
+        private System.Windows.Forms.TextBox txtNaamWijn;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.TextBox txtGroepsnummer;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.TextBox txtInBestelling;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.TextBox txtBestelpunt;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.TextBox txtUitAssortiment;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.TextBox txtLeveranciersNummer;
+        private System.Windows.Forms.Label label18;
     }
 }
 
