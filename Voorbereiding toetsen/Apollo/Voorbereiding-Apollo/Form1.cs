@@ -121,6 +121,31 @@ namespace Voorbereiding_Apollo
             Reset();
         }
 
+        //methode om leverancier toe te voegen
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            //object aanmaken van leverancier
+            Model.Leverancier leverancier = new Leverancier()
+            {
+                LeverancierNummer = Convert.ToInt16(txtLevnr.Text),
+                FirmaNaam = txtNaamFirma.Text,
+                Adres = txtAdres.Text,
+                Postnr = txtPostnr.Text,
+                Gemeente = txtGemeente.Text,
+            };
+
+            //methode aanroepen om leverancier toe te voegen
+            LeveranciersDA.VoegLeverancierToe(leverancier);
+
+            //alle leveranciers opnieuw inladen
+            lsvLeveranciers.Items.Clear();
+            VulLijstLeveranciers();
+
+            //textboxen leegmaken
+            Reset();
+        }
+
+        //methode om textboxen te legen
         private void Reset()
         {
             txtLevnr.Clear();
@@ -129,5 +154,6 @@ namespace Voorbereiding_Apollo
             txtPostnr.Clear();
             txtGemeente.Clear();
         }
+        
     }
 }

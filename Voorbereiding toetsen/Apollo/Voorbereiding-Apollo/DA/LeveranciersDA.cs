@@ -80,5 +80,27 @@ namespace Voorbereiding_Apollo.DA
             //commando uitvoeren
             cmd.ExecuteNonQuery();
         }
+
+        //methode om een leverancier toe te voegen
+        public static void VoegLeverancierToe(Model.Leverancier leverancier)
+        {
+            //connectie maken met DB
+            MySqlConnection conn = Helper.Database.Maakverbinding();
+
+            //query opstellen
+            string query = "INSERT INTO `tblleveranciers`(`leveranciernummer`, `firmanaam`, `adres`, `postnr`, `gemeente`) VALUES (@leveranciersnummer,@firmanaam,@adres,@postnr,@gemeente)";
+
+            //commando opstellen
+            MySqlCommand cmd = new MySqlCommand(query, conn);
+
+            cmd.Parameters.AddWithValue("@leveranciersnummer", leverancier.LeverancierNummer);
+            cmd.Parameters.AddWithValue("@firmanaam", leverancier.FirmaNaam);
+            cmd.Parameters.AddWithValue("@adres", leverancier.Adres);
+            cmd.Parameters.AddWithValue("@postnr", leverancier.Postnr);
+            cmd.Parameters.AddWithValue("@gemeente", leverancier.Gemeente);
+
+            //commando uitvoeren
+            cmd.ExecuteNonQuery();
+        }
     }
 }
