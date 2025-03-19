@@ -14,6 +14,8 @@ namespace Voorbereiding_Apollo
 {
     public partial class Form1: Form
     {
+        string GekozenLeveranciersnummer;
+
         public Form1()
         {
             InitializeComponent();
@@ -63,6 +65,9 @@ namespace Voorbereiding_Apollo
 
                 lsvWijnen.Items.Add(item);
             }
+
+            //gekozen leverancier opslaan
+            GekozenLeveranciersnummer = txtLevnr.Text;
         }
 
         private void lsvWijnen_SelectedIndexChanged(object sender, EventArgs e)
@@ -90,6 +95,39 @@ namespace Voorbereiding_Apollo
             txtUitAssortiment.Text = gekozenWijn.SubItems[11].Text;
             txtLeveranciersNummer.Text = gekozenWijn.SubItems[12].Text;
             txtFoto.Text = gekozenWijn.SubItems[13].Text;
+        }
+
+        //methode om info leverancier te wijzigen
+        private void btnWijzig_Click(object sender, EventArgs e)
+        {
+            //object aanmaken van leverancier
+            Model.Leverancier leverancier = new Model.Leverancier() 
+            {
+                LeverancierNummer = Convert.ToInt16(txtLevnr.Text),
+                FirmaNaam = txtNaamFirma.Text,
+                Adres = txtAdres.Text,
+                Postnr = txtPostnr.Text,
+                Gemeente = txtGemeente.Text,
+            };
+
+            //methode aanroepen om leverancier te wijzigen
+            LeveranciersDA.WijzigLeverenancier(GekozenLeveranciersnummer, leverancier);
+
+            //alle leveranciers opnieuw inladen
+            lsvLeveranciers.Items.Clear();
+            VulLijstLeveranciers();
+
+            //textboxen leegmaken
+            Reset();
+        }
+
+        private void Reset()
+        {
+            txtLevnr.Clear();
+            txtNaamFirma.Clear();
+            txtAdres.Clear();
+            txtPostnr.Clear();
+            txtGemeente.Clear();
         }
     }
 }

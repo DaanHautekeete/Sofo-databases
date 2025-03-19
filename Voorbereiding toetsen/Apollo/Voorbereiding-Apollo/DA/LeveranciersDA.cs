@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -54,6 +55,30 @@ namespace Voorbereiding_Apollo.DA
                 Postnr = (string)record["postnr"],
                 Gemeente = (string)record["gemeente"]
             };
+        }
+
+
+        //methode om een leverancier te wijzigen
+        public static void WijzigLeverenancier(string OudLeveranciersnummer, Model.Leverancier leverancier)
+        {
+            //connectie maken met DB
+            MySqlConnection conn = Helper.Database.Maakverbinding();
+
+            //query opstellen
+            string query = "UPDATE `tblleveranciers` SET `leveranciernummer`=@leveranciersnummer,`firmanaam`=@firmanaam,`adres`=@adres,`postnr`=@postnr,`gemeente`=@gemeente WHERE leveranciernummer = @oudLeveranciersnummer";
+
+            //commando opstellen
+            MySqlCommand cmd = new MySqlCommand(query, conn);
+
+            cmd.Parameters.AddWithValue("@leveranciersnummer", leverancier.LeverancierNummer);
+            cmd.Parameters.AddWithValue("@firmanaam", leverancier.FirmaNaam);
+            cmd.Parameters.AddWithValue("@adres", leverancier.Adres);
+            cmd.Parameters.AddWithValue("@postnr", leverancier.Postnr);
+            cmd.Parameters.AddWithValue("@gemeente", leverancier.Gemeente);
+            cmd.Parameters.AddWithValue("@oudLeveranciersnummer", OudLeveranciersnummer);
+
+            //commando uitvoeren
+            cmd.ExecuteNonQuery();
         }
     }
 }
