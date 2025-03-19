@@ -364,6 +364,7 @@
             this.btnVerwijderWijn.TabIndex = 62;
             this.btnVerwijderWijn.Text = "Verwijder wijn";
             this.btnVerwijderWijn.UseVisualStyleBackColor = true;
+            this.btnVerwijderWijn.Click += new System.EventHandler(this.btnVerwijderWijn_Click);
             // 
             // btnWijnToevoegen
             // 

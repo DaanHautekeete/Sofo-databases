@@ -235,6 +235,20 @@ namespace Voorbereiding_Apollo
             ResetTextboxesWijn();
         }
 
+        //Methode om wijn te verwijderen
+        private void btnVerwijderWijn_Click(object sender, EventArgs e)
+        {
+            //methode aanroepen om wijn te verwijderen
+            WijnenDA.VerwijderWijn(GekozenCode);
+
+            //alle wijnen opnieuw inladen
+            lsvWijnen.Items.Clear();
+            vulLijstWijnen();
+
+            ResetTextboxesWijn();
+        }
+
+
         //methode om textboxen te legen
         private void ResetTextboxesLeverancier()
         {
@@ -262,7 +276,6 @@ namespace Voorbereiding_Apollo
             txtLeveranciersNummer.Clear();
             txtFoto.Clear();
         }
-
 
     }
 }

@@ -134,5 +134,27 @@ namespace Voorbereiding_Apollo.DA
             //connectie sluiten
             conn.Close();
         }
+
+        public static void VerwijderWijn(string code)
+        {
+            //connection maken met DB
+            MySqlConnection conn = Helper.Database.Maakverbinding();
+
+            //query opstellen
+            string query = "DELETE FROM `tblwijnen` WHERE Code = @code";
+
+            //commando opstellen
+            MySqlCommand cmd = new MySqlCommand(query, conn);
+            cmd.CommandType = CommandType.Text;
+
+            //parameters toevoegen
+            cmd.Parameters.AddWithValue("@code", code);
+
+            //commando uitvoeren
+            cmd.ExecuteNonQuery();
+
+            //connectie sluiten
+            conn.Close();
+        }
     }
 }
