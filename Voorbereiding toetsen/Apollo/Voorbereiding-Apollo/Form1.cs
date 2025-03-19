@@ -145,6 +145,20 @@ namespace Voorbereiding_Apollo
             Reset();
         }
 
+        //methode om leverancier te verwijderen
+        private void btnVerwijder_Click(object sender, EventArgs e)
+        {
+            //methode aanroepen om leverancier te verwijderen
+            LeveranciersDA.VerwijderLeverancier(GekozenLeveranciersnummer);
+
+            //alle leveranciers opnieuw inladen
+            lsvLeveranciers.Items.Clear();
+            VulLijstLeveranciers();
+
+            //textboxen leegmaken
+            Reset();
+        }
+
         //methode om textboxen te legen
         private void Reset()
         {
@@ -154,6 +168,6 @@ namespace Voorbereiding_Apollo
             txtPostnr.Clear();
             txtGemeente.Clear();
         }
-        
+
     }
 }

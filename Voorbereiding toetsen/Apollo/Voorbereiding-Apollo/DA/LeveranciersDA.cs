@@ -102,5 +102,21 @@ namespace Voorbereiding_Apollo.DA
             //commando uitvoeren
             cmd.ExecuteNonQuery();
         }
+
+        public static void VerwijderLeverancier(string leveranciersnummer)
+        {
+            //connectie maken met DB
+            MySqlConnection conn = Helper.Database.Maakverbinding();
+            
+            //query opstellen
+            string query = "DELETE FROM `tblleveranciers` WHERE leveranciernummer = @leveranciernummer";
+            
+            //commando opstellen
+            MySqlCommand cmd = new MySqlCommand(query, conn);
+            cmd.Parameters.AddWithValue("@leveranciernummer", leveranciersnummer);
+            
+            //commando uitvoeren
+            cmd.ExecuteNonQuery();
+        }
     }
 }
