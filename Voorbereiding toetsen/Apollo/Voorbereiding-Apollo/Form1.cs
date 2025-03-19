@@ -70,6 +70,9 @@ namespace Voorbereiding_Apollo
             txtGemeente.Text = gekozenLeverancier.SubItems[4].Text;
 
             vulLijstWijnen();
+
+            //textbox van leveranciersnummer bij wijnen automatisch invullen
+            txtLeveranciersNummer.Text = txtLevnr.Text;
             
 
             //gekozen leverancier opslaan
@@ -200,6 +203,38 @@ namespace Voorbereiding_Apollo
             ResetTextboxesWijn();
         }
 
+        //methode om wijn toe te voegen
+        private void btnWijnToevoegen_Click(object sender, EventArgs e)
+        {
+            //object aanmaken van wijn
+            Model.Wijnen wijn = new Model.Wijnen()
+            {
+                Code = txtCode.Text,
+                Jaar = txtJaar.Text,
+                Naam = txtNaamWijn.Text,
+                Omschrijving = txtOmschrijving.Text,
+                Groepsnummer = Convert.ToInt16(txtGroepsnummer.Text),
+                Inhoud = txtInhoud.Text,
+                PrijsPerFles = Convert.ToDouble(txtPPF.Text),
+                HoeveelheidPerVerpakking = Convert.ToInt16(txtHoeveelheidPerVerpakking.Text),
+                Voorraad = Convert.ToInt16(txtVoorraad.Text),
+                InBestelling = Convert.ToInt16(txtInBestelling.Text),
+                Bestelpunt = Convert.ToInt16(txtBestelpunt.Text),
+                UitAssortiment = Convert.ToInt16(txtUitAssortiment.Text),
+                LeveranciersNummer = Convert.ToInt16(txtLeveranciersNummer.Text),
+                Foto = txtFoto.Text
+            };
+
+            //methode aanroepen om wijn toe te voegen
+            WijnenDA.VoegWijnToe(wijn);
+
+            //alle wijnen opnieuw inladen
+            lsvWijnen.Items.Clear();
+            vulLijstWijnen();
+
+            ResetTextboxesWijn();
+        }
+
         //methode om textboxen te legen
         private void ResetTextboxesLeverancier()
         {
@@ -227,5 +262,7 @@ namespace Voorbereiding_Apollo
             txtLeveranciersNummer.Clear();
             txtFoto.Clear();
         }
+
+
     }
 }

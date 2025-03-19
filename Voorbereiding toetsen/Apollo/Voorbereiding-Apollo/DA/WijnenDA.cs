@@ -99,5 +99,40 @@ namespace Voorbereiding_Apollo.DA
             //connectie sluiten
             conn.Close();
         }
+
+        public static void VoegWijnToe(Model.Wijnen wijn)
+        {
+            //connection maken met DB
+            MySqlConnection conn = Helper.Database.Maakverbinding();
+
+            //query opstellen
+            string query = "INSERT INTO `tblwijnen`(`Code`, `Jaar`, `Naam`, `Omschrijving`, `Groepsnummer`, `Inhoud`, `PrijsPerFles`, `HoeveelheidPerVerpakking`, `Voorraad`, `InBestelling`, `Bestelpunt`, `UitAssortiment`, `Leveranciersnummer`, `foto`) VALUES (@code,@jaar,@naam,@omschrijving,@groepsnummer,@inhoud,@ppf,@hoeveelheidperverpakking,@voorraad,@inbestelling,@bestelpunt,@uitassortiment,@leveranciersnummer,@foto)";
+
+            //commando opstellen
+            MySqlCommand cmd = new MySqlCommand(query, conn);
+            cmd.CommandType = CommandType.Text;
+
+            //parameters toevoegen
+            cmd.Parameters.AddWithValue("@code", wijn.Code);
+            cmd.Parameters.AddWithValue("@jaar", wijn.Jaar);
+            cmd.Parameters.AddWithValue("@naam", wijn.Naam);
+            cmd.Parameters.AddWithValue("@omschrijving", wijn.Omschrijving);
+            cmd.Parameters.AddWithValue("@groepsnummer", wijn.Groepsnummer);
+            cmd.Parameters.AddWithValue("@inhoud", wijn.Inhoud);
+            cmd.Parameters.AddWithValue("@ppf", wijn.PrijsPerFles);
+            cmd.Parameters.AddWithValue("@hoeveelheidperverpakking", wijn.HoeveelheidPerVerpakking);
+            cmd.Parameters.AddWithValue("@voorraad", wijn.Voorraad);
+            cmd.Parameters.AddWithValue("@inbestelling", wijn.InBestelling);
+            cmd.Parameters.AddWithValue("@bestelpunt", wijn.Bestelpunt);
+            cmd.Parameters.AddWithValue("@uitassortiment", wijn.UitAssortiment);
+            cmd.Parameters.AddWithValue("@leveranciersnummer", wijn.LeveranciersNummer);
+            cmd.Parameters.AddWithValue("@foto", wijn.Foto);
+
+            //commando uitvoeren
+            cmd.ExecuteNonQuery();
+
+            //connectie sluiten
+            conn.Close();
+        }
     }
 }
