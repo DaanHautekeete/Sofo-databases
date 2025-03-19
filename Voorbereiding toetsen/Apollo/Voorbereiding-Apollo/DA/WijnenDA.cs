@@ -63,5 +63,41 @@ namespace Voorbereiding_Apollo.DA
                 Foto = record["foto"].ToString()
             };
         }
+
+        public static void WijzigWijn(string OudCode, Model.Wijnen wijn)
+        {
+            //connection maken met DB
+            MySqlConnection conn = Helper.Database.Maakverbinding();
+
+            //query opstellen
+            string query = "UPDATE `tblwijnen` SET `Code`=@code,`Jaar`=@jaar,`Naam`=@naam,`Omschrijving`=@omschrijving,`Groepsnummer`=@groepsnummer,`Inhoud`=@inhoud,`PrijsPerFles`= @ppf,`HoeveelheidPerVerpakking`=@hoeveelheidperverpakking,`Voorraad`=@voorraad,`InBestelling`=@inbestelling,`Bestelpunt`=@bestelpunt,`UitAssortiment`=@uitassortiment,`Leveranciersnummer`=@leveranciersnummer,`foto`=@foto WHERE `Code`=@oudeCode";
+
+            //commando opstellen
+            MySqlCommand cmd = new MySqlCommand(query, conn);
+            cmd.CommandType = CommandType.Text;
+
+            //parameters toevoegen
+            cmd.Parameters.AddWithValue("@code", wijn.Code);
+            cmd.Parameters.AddWithValue("@jaar", wijn.Jaar);
+            cmd.Parameters.AddWithValue("@naam", wijn.Naam);
+            cmd.Parameters.AddWithValue("@omschrijving", wijn.Omschrijving);
+            cmd.Parameters.AddWithValue("@groepsnummer", wijn.Groepsnummer);
+            cmd.Parameters.AddWithValue("@inhoud", wijn.Inhoud);
+            cmd.Parameters.AddWithValue("@ppf", wijn.PrijsPerFles);
+            cmd.Parameters.AddWithValue("@hoeveelheidperverpakking", wijn.HoeveelheidPerVerpakking);
+            cmd.Parameters.AddWithValue("@voorraad", wijn.Voorraad);
+            cmd.Parameters.AddWithValue("@inbestelling", wijn.InBestelling);
+            cmd.Parameters.AddWithValue("@bestelpunt", wijn.Bestelpunt);
+            cmd.Parameters.AddWithValue("@uitassortiment", wijn.UitAssortiment);
+            cmd.Parameters.AddWithValue("@leveranciersnummer", wijn.LeveranciersNummer);
+            cmd.Parameters.AddWithValue("@foto", wijn.Foto);
+            cmd.Parameters.AddWithValue("@oudeCode", OudCode);
+
+            //commando uitvoeren
+            cmd.ExecuteNonQuery();
+
+            //connectie sluiten
+            conn.Close();
+        }
     }
 }

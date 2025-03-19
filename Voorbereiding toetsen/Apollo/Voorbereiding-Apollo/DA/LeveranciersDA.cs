@@ -79,6 +79,9 @@ namespace Voorbereiding_Apollo.DA
 
             //commando uitvoeren
             cmd.ExecuteNonQuery();
+
+            //connectie sluiten
+            conn.Close();
         }
 
         //methode om een leverancier toe te voegen
@@ -101,6 +104,9 @@ namespace Voorbereiding_Apollo.DA
 
             //commando uitvoeren
             cmd.ExecuteNonQuery();
+
+            //connectie sluiten
+            conn.Close();
         }
 
         public static void VerwijderLeverancier(string leveranciersnummer)
@@ -117,6 +123,9 @@ namespace Voorbereiding_Apollo.DA
             
             //commando uitvoeren
             cmd.ExecuteNonQuery();
+
+            //connectie sluiten
+            conn.Close();
         }
     }
 }
