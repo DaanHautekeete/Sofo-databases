@@ -49,5 +49,24 @@ namespace extraOefeningBrouwerij.DA
                 ImagesURL = record["ImagesURL"].ToString()
             };
         }
+
+        public static void UpdateDescriptions(string ID, string beschrijvingNL, string beschrijvingEN)
+        {
+            //verbinding maken met DB
+            MySqlConnection conn = Helper.database.Maakverbinding();
+
+            //query opstellen
+            string query = "UPDATE brouwerij SET Description_nl = @descr_nl, Description_en = @descr_en WHERE id=@idBrouwerij";
+
+            MySqlCommand cmd = new MySqlCommand(query, conn);
+            cmd.Parameters.AddWithValue("@descr_nl", beschrijvingNL);
+            cmd.Parameters.AddWithValue("@descr_en", beschrijvingEN);
+            cmd.Parameters.AddWithValue("@idBrouwerij", ID);
+
+
+            cmd.ExecuteNonQuery();
+
+            conn.Close();
+        }
     }
 }

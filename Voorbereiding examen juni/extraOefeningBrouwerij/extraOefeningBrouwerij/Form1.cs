@@ -60,5 +60,17 @@ namespace extraOefeningBrouwerij
 
             }
         }
+
+        private void btnPasBeschrijvingAan_Click(object sender, EventArgs e)
+        {
+            if (lsvBrouwerijen.SelectedItems.Count == 0)
+            {
+                return;
+            }
+
+            //listviewitem aanmaken
+            ListViewItem gekozenBrouwerij = lsvBrouwerijen.SelectedItems[0];
+            brouwerijDA.UpdateDescriptions(gekozenBrouwerij.Text.ToString(), txtBeschrijvingNL.Text, txtBeschrijvingEN.Text);
+        }
     }
 }

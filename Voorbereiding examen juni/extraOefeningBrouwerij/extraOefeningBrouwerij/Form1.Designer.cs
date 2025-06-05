@@ -112,6 +112,7 @@
             this.btnPasBeschrijvingAan.TabIndex = 4;
             this.btnPasBeschrijvingAan.Text = "Pas beschrijving aan";
             this.btnPasBeschrijvingAan.UseVisualStyleBackColor = true;
+            this.btnPasBeschrijvingAan.Click += new System.EventHandler(this.btnPasBeschrijvingAan_Click);
             // 
             // btnVerwijderBrouwerij
             // 
