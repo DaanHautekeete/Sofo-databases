@@ -122,6 +122,7 @@
             this.btnVerwijderBrouwerij.TabIndex = 5;
             this.btnVerwijderBrouwerij.Text = "Verwijder geselecteerde brouwerij";
             this.btnVerwijderBrouwerij.UseVisualStyleBackColor = true;
+            this.btnVerwijderBrouwerij.Click += new System.EventHandler(this.btnVerwijderBrouwerij_Click);
             // 
             // Form1
             // 

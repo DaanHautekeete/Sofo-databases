@@ -3,6 +3,7 @@ using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -67,6 +68,46 @@ namespace extraOefeningBrouwerij.DA
             cmd.ExecuteNonQuery();
 
             conn.Close();
+        }
+
+        public static void VerwijderBrouwerij(string ID)
+        {
+            //verbinding maken met DB
+            MySqlConnection conn = Helper.database.Maakverbinding();
+
+            //query opstellen
+            string query = "DELETE from brouwerij WHERE id=@idBrouwerij";
+
+            MySqlCommand cmd = new MySqlCommand(query, conn);
+
+            cmd.Parameters.AddWithValue("@idBrouwerij", ID);
+
+            cmd.ExecuteNonQuery();
+
+            conn.Close();
+        }
+
+        public static Color GetColorCode(string ID)
+        {
+
+            MySqlConnection conn = Helper.database.Maakverbinding();
+
+            //query aanmaken
+            string query = "SELECT ImagesURL FROM brouwerij WHERE id=@idBrouwerij";
+            MySqlCommand cmd = new MySqlCommand(query, conn);
+            cmd.Parameters.AddWithValue("@idBrouwerij", ID);
+
+            string URL = cmd.ExecuteScalar().ToString();
+
+            if (URL == "")
+            {
+                return Color.Red;
+            }
+            else
+            {
+                return Color.Green;
+            }
+
         }
     }
 }

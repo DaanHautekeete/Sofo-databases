@@ -21,22 +21,7 @@ namespace extraOefeningBrouwerij
 
         private void btnToonData_Click(object sender, EventArgs e)
         {
-            foreach(brouwerij brouwerij in brouwerijDA.OphalenBrouwerijen())
-            {
-                ListViewItem listViewItem = new ListViewItem(new string[] {brouwerij.id.ToString(), brouwerij.Name, brouwerij.Email, brouwerij.Website});
-
-                listViewItem.Tag = brouwerij;
-                if(brouwerij.ImagesURL == "")
-                {
-                    listViewItem.BackColor = Color.Red;
-                }
-                else
-                {
-                    listViewItem.BackColor = Color.Green;
-                }
-
-                lsvBrouwerijen.Items.Add(listViewItem);
-            }
+            VulLijst();
         }
 
         private void lsvBrouwerijen_SelectedIndexChanged(object sender, EventArgs e)
@@ -71,6 +56,41 @@ namespace extraOefeningBrouwerij
             //listviewitem aanmaken
             ListViewItem gekozenBrouwerij = lsvBrouwerijen.SelectedItems[0];
             brouwerijDA.UpdateDescriptions(gekozenBrouwerij.Text.ToString(), txtBeschrijvingNL.Text, txtBeschrijvingEN.Text);
+        }
+
+        private void btnVerwijderBrouwerij_Click(object sender, EventArgs e)
+        {
+            if (lsvBrouwerijen.SelectedItems.Count == 0)
+            {
+                return;
+            }
+
+            //listviewitem aanmaken
+            ListViewItem gekozenBrouwerij = lsvBrouwerijen.SelectedItems[0];
+
+            brouwerijDA.VerwijderBrouwerij(gekozenBrouwerij.Text.ToString());
+            lsvBrouwerijen.Items.Clear();
+
+            VulLijst();
+        }
+
+        private void VulLijst()
+        {
+            //listview opnieuw inladen
+            foreach (brouwerij brouwerij in brouwerijDA.OphalenBrouwerijen())
+            {
+                ListViewItem listViewItem = new ListViewItem(new string[] { brouwerij.id.ToString(), brouwerij.Name, brouwerij.Email, brouwerij.Website });
+
+                listViewItem.Tag = brouwerij;
+                listViewItem.BackColor = brouwerijDA.GetColorCode(brouwerij.id.ToString());
+
+
+                lsvBrouwerijen.Items.Add(listViewItem);
+            }
+
+            //textboxen legen
+            txtBeschrijvingEN.Clear();
+            txtBeschrijvingNL.Clear();
         }
     }
 }
