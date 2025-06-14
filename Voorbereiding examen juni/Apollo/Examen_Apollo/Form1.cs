@@ -146,5 +146,28 @@ namespace Examen_Apollo
 
             ResetTextboxesLeverancier();
         }
+
+        private void lsvWijnen_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(lsvWijnen.SelectedItems.Count == 0) { return; }
+            //listviewitem maken
+            ListViewItem gekozenWijn = lsvWijnen.SelectedItems[0];
+
+            //textboxen vullen met data
+            txtCode.Text = gekozenWijn.Text;
+            txtJaar.Text = gekozenWijn.SubItems[1].Text;
+            txtNaamWijn.Text = gekozenWijn.SubItems[2].Text;
+            txtOmschrijving.Text = gekozenWijn.SubItems[3].Text;
+            txtGroepsnummer.Text = gekozenWijn.SubItems[4].Text;
+            txtInhoud.Text = gekozenWijn.SubItems[5].Text;
+            txtPPF.Text = gekozenWijn.SubItems[6].Text;
+            txtHoeveelheidPerVerpakking.Text = gekozenWijn.SubItems[7].Text;
+            txtVoorraad.Text = gekozenWijn.SubItems[8].Text;
+            txtInBestelling.Text = gekozenWijn.SubItems[9].Text;
+            txtBestelpunt.Text = gekozenWijn.SubItems[10].Text;
+            txtUitAssortiment.Text = gekozenWijn.SubItems[11].Text;
+            txtLeveranciersNummer.Text = gekozenWijn.SubItems[12].Text;
+            txtFoto.Text = gekozenWijn.SubItems[13].Text;
+        }
     }
 }

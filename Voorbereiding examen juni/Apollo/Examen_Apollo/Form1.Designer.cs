@@ -393,6 +393,7 @@
             this.lsvWijnen.TabIndex = 60;
             this.lsvWijnen.UseCompatibleStateImageBehavior = false;
             this.lsvWijnen.View = System.Windows.Forms.View.Details;
+            this.lsvWijnen.SelectedIndexChanged += new System.EventHandler(this.lsvWijnen_SelectedIndexChanged);
             // 
             // Code
             // 
