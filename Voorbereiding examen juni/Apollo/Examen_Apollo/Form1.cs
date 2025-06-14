@@ -87,5 +87,22 @@ namespace Examen_Apollo
             txtPostnr.Clear();
             txtGemeente.Clear();
         }
+
+        private void btnVerwijder_Click(object sender, EventArgs e)
+        {
+            //object maken van leverancier
+            Leverancier TeVerwijderenLeverancier = new Leverancier()
+            {
+                leveranciernummer = Convert.ToInt16(txtLevnr.Text)
+            };
+
+            //leverancier verwijderen
+            LeverancierDA.LeverancierVerwijderen(TeVerwijderenLeverancier);
+
+            //listview opnieuw laden
+            LaadLeveranciers();
+
+            ResetTextboxesLeverancier();
+        }
     }
 }

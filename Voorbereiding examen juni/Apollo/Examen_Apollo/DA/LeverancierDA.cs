@@ -65,6 +65,27 @@ namespace Examen_Apollo.DA
             conn.Close();
         }
 
+        public static void LeverancierVerwijderen(Leverancier leverancier)
+        {
+            //connectie maken met DB
+            MySqlConnection conn = Database.Maakverbinding();
+
+            //query opstellen
+            string query = "DELETE FROM tblleveranciers WHERE leveranciernummer = @leveranciernummer";
+
+            //commando aanmaken
+            MySqlCommand cmd = new MySqlCommand(query, conn);
+
+            //parameters instellen
+            cmd.Parameters.AddWithValue("@leveranciernummer", leverancier.leveranciernummer);
+
+            //commando uitvoeren
+            cmd.ExecuteNonQuery();
+
+            //verbinding sluiten
+            conn.Close();
+        }
+
         public static Leverancier Create(IDataRecord record)
         {
             return new Leverancier()

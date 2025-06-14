@@ -458,6 +458,7 @@
             this.btnVerwijder.TabIndex = 59;
             this.btnVerwijder.Text = "Verwijder";
             this.btnVerwijder.UseVisualStyleBackColor = true;
+            this.btnVerwijder.Click += new System.EventHandler(this.btnVerwijder_Click);
             // 
             // btnAdd
             // 
