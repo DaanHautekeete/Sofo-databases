@@ -110,6 +110,7 @@ namespace Examen_Apollo
             //object van leverancier maken
             Leverancier leverancier = new Leverancier()
             {
+                leveranciernummer = Convert.ToInt16(txtLevnr.Text),
                 firmanaam = txtNaamFirma.Text,
                 adres = txtAdres.Text,
                 postnr = txtPostnr.Text,
