@@ -72,6 +72,26 @@ namespace Examen_Apollo.DA
             //connectie sluiten
             conn.Close();
         }
+
+        public static void VerwijderWijn(Wijnen wijn)
+        {
+            //connectie maken met DB
+            MySqlConnection conn = Database.Maakverbinding();
+
+            //query opmaken
+            string query = "DELETE FROM tblwijnen WHERE Code = @code";
+
+            //commando opmaken
+            MySqlCommand cmd = new MySqlCommand(query, conn);
+
+            //parameters instellen
+            cmd.Parameters.AddWithValue("@code", wijn.Code);
+
+            //commando uitvoeren
+            cmd.ExecuteNonQuery();
+
+            conn.Close();
+        }
         
         public static Wijnen Create(IDataRecord record)
         {

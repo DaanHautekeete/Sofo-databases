@@ -109,6 +109,24 @@ namespace Examen_Apollo
             txtGemeente.Clear();
         }
 
+        private void ResetTextboxesWijn()
+        {
+            txtCode.Clear();
+            txtJaar.Clear();
+            txtNaamWijn.Clear();
+            txtOmschrijving.Clear();
+            txtGroepsnummer.Clear();
+            txtInhoud.Clear();
+            txtPPF.Clear();
+            txtHoeveelheidPerVerpakking.Clear();
+            txtVoorraad.Clear();
+            txtInBestelling.Clear();
+            txtBestelpunt.Clear();
+            txtUitAssortiment.Clear();
+            txtLeveranciersNummer.Clear();
+            txtFoto.Clear();
+        }
+
         private void btnVerwijder_Click(object sender, EventArgs e)
         {
             //object maken van leverancier
@@ -196,6 +214,23 @@ namespace Examen_Apollo
 
             //listview opnieuw laden
             LaadWijnen();
+        }
+
+        private void btnVerwijderWijn_Click(object sender, EventArgs e)
+        {
+            //object aanmaken van wijn
+            Wijnen TeVerwijderenWijn = new Wijnen()
+            {
+                Code = txtCode.Text
+            };
+
+            //wijn verwijderen
+            WijnenDA.VerwijderWijn(TeVerwijderenWijn);
+
+            //listview opnieuw laden
+            LaadWijnen();
+
+            ResetTextboxesWijn();
         }
     }
 }
