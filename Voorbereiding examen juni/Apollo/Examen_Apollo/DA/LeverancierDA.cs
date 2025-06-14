@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -83,6 +84,31 @@ namespace Examen_Apollo.DA
             cmd.ExecuteNonQuery();
 
             //verbinding sluiten
+            conn.Close();
+        }
+
+        public static void LeverancierWijzigen(Leverancier leverancier)
+        {
+            //connectie maken met DB
+            MySqlConnection conn = Database.Maakverbinding();
+
+            //query opstellen
+            string qry = "UPDATE tblleveranciers SET firmanaam = @firmanaam, adres = @adres, postnr = @postnr, gemeente = @gemeente WHERE leveranciernummer = @leveranciernummer";
+
+            //commando maken
+            MySqlCommand cmd = new MySqlCommand(qry, conn);
+
+            //parameters toevoegen
+            cmd.Parameters.AddWithValue("@leveranciernummer", leverancier.leveranciernummer);
+            cmd.Parameters.AddWithValue("@firmanaam", leverancier.firmanaam);
+            cmd.Parameters.AddWithValue("@adres", leverancier.adres);
+            cmd.Parameters.AddWithValue("@postnr", leverancier.postnr);
+            cmd.Parameters.AddWithValue("@gemeente", leverancier.gemeente);
+
+            //commando uitvoeren
+            cmd.ExecuteNonQuery();
+
+            //connectie sluiten
             conn.Close();
         }
 

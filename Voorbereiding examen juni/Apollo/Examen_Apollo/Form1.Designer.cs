@@ -478,6 +478,7 @@
             this.btnWijzig.TabIndex = 57;
             this.btnWijzig.Text = "Wijzig";
             this.btnWijzig.UseVisualStyleBackColor = true;
+            this.btnWijzig.Click += new System.EventHandler(this.btnWijzig_Click);
             // 
             // txtGemeente
             // 
@@ -545,6 +546,7 @@
             // 
             // txtLevnr
             // 
+            this.txtLevnr.Enabled = false;
             this.txtLevnr.Location = new System.Drawing.Point(12, 324);
             this.txtLevnr.Name = "txtLevnr";
             this.txtLevnr.Size = new System.Drawing.Size(100, 20);

@@ -104,5 +104,25 @@ namespace Examen_Apollo
 
             ResetTextboxesLeverancier();
         }
+
+        private void btnWijzig_Click(object sender, EventArgs e)
+        {
+            //object van leverancier maken
+            Leverancier leverancier = new Leverancier()
+            {
+                firmanaam = txtNaamFirma.Text,
+                adres = txtAdres.Text,
+                postnr = txtPostnr.Text,
+                gemeente = txtGemeente.Text
+            };
+
+            //leverancier wijzigen
+            LeverancierDA.LeverancierWijzigen(leverancier);
+
+            //listview opnieuw laden
+            LaadLeveranciers();
+
+            ResetTextboxesLeverancier();
+        }
     }
 }
