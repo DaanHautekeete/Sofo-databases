@@ -232,5 +232,37 @@ namespace Examen_Apollo
 
             ResetTextboxesWijn();
         }
+
+        private void btnWijzigWijnen_Click(object sender, EventArgs e)
+        {
+            //oude code ophalen
+            ListViewItem item = lsvWijnen.SelectedItems[0];
+            string oudeCode = item.Text;
+
+            //object aanmaken van wijn
+            Wijnen wijn = new Wijnen()
+            {
+                Code = txtCode.Text,
+                Jaar = txtJaar.Text,
+                Naam = txtNaamWijn.Text,
+                Omschrijving = txtOmschrijving.Text,
+                Groepsnummer = Convert.ToInt16(txtGroepsnummer.Text),
+                Inhoud = txtInhoud.Text,
+                PrijsPerFles = Convert.ToDouble(txtPPF.Text),
+                HoeveelheidPerVerpakking = Convert.ToInt16(txtHoeveelheidPerVerpakking.Text),
+                Voorraad = Convert.ToInt16(txtVoorraad.Text),
+                InBestelling = Convert.ToInt16(txtInBestelling.Text),
+                Bestelpunt = Convert.ToInt16(txtBestelpunt.Text),
+                UitAssortiment = Convert.ToInt16(txtUitAssortiment.Text),
+                Leveranciersnummer = Convert.ToInt16(txtLeveranciersNummer.Text),
+                foto = txtFoto.Text
+            };
+
+            //wijn wijzigen
+            WijnenDA.WijzigWijn(wijn, oudeCode);
+
+            LaadWijnen();
+
+        }
     }
 }

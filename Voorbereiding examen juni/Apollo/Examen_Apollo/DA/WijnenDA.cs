@@ -92,6 +92,40 @@ namespace Examen_Apollo.DA
 
             conn.Close();
         }
+
+        public static void WijzigWijn(Wijnen wijn, string oudeCode)
+        {
+            //connectie maken met DB
+            MySqlConnection conn = Database.Maakverbinding();
+
+            //query maken
+            string query = "UPDATE `tblwijnen` SET `Code`=@nieuweCode,`Jaar`=@jaar,`Naam`=@naam,`Omschrijving`=@omschrijving,`Groepsnummer`=@groepsnummer,`Inhoud`=@inhoud,`PrijsPerFles`=@ppf,`HoeveelheidPerVerpakking`=@hoeveelheidPerverpakking,`Voorraad`=@voorraad,`InBestelling`=@inBestelling,`Bestelpunt`=@bestelpunt,`UitAssortiment`=@uitAssortiment,`Leveranciersnummer`=@leveranciersnummer,`foto`=@foto WHERE code = @oudeCode";
+
+            //commando opmaken
+            MySqlCommand cmd = new MySqlCommand(query, conn);
+
+            //parameters instellen
+            cmd.Parameters.AddWithValue("@nieuweCode", wijn.Code);
+            cmd.Parameters.AddWithValue("@jaar", wijn.Jaar);
+            cmd.Parameters.AddWithValue("@naam", wijn.Naam);
+            cmd.Parameters.AddWithValue("@omschrijving", wijn.Omschrijving);
+            cmd.Parameters.AddWithValue("@groepsnummer", wijn.Groepsnummer);
+            cmd.Parameters.AddWithValue("@inhoud", wijn.Inhoud);
+            cmd.Parameters.AddWithValue("@ppf", wijn.PrijsPerFles);
+            cmd.Parameters.AddWithValue("@hoeveelheidPerverpakking", wijn.HoeveelheidPerVerpakking);
+            cmd.Parameters.AddWithValue("@voorraad", wijn.Voorraad);
+            cmd.Parameters.AddWithValue("@inBestelling", wijn.InBestelling);
+            cmd.Parameters.AddWithValue("@bestelpunt", wijn.Bestelpunt);
+            cmd.Parameters.AddWithValue("@uitAssortiment", wijn.UitAssortiment);
+            cmd.Parameters.AddWithValue("@leveranciersnummer", wijn.Leveranciersnummer);
+            cmd.Parameters.AddWithValue("@foto", wijn.foto);
+            cmd.Parameters.AddWithValue("@oudeCode", oudeCode);
+
+            //commando uitvoeren
+            cmd.ExecuteNonQuery();
+
+            conn.Close();
+        }
         
         public static Wijnen Create(IDataRecord record)
         {

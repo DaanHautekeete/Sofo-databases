@@ -238,6 +238,7 @@
             this.btnWijzigWijnen.TabIndex = 76;
             this.btnWijzigWijnen.Text = "Wijzig wijnen";
             this.btnWijzigWijnen.UseVisualStyleBackColor = true;
+            this.btnWijzigWijnen.Click += new System.EventHandler(this.btnWijzigWijnen_Click);
             // 
             // txtVoorraad
             // 
