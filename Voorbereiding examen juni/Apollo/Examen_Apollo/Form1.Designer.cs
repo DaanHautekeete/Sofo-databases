@@ -227,6 +227,7 @@
             this.btnWijnToevoegen.TabIndex = 77;
             this.btnWijnToevoegen.Text = "Wijn toevoegen";
             this.btnWijnToevoegen.UseVisualStyleBackColor = true;
+            this.btnWijnToevoegen.Click += new System.EventHandler(this.btnWijnToevoegen_Click);
             // 
             // btnWijzigWijnen
             // 

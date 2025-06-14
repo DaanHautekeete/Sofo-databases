@@ -169,5 +169,33 @@ namespace Examen_Apollo
             txtLeveranciersNummer.Text = gekozenWijn.SubItems[12].Text;
             txtFoto.Text = gekozenWijn.SubItems[13].Text;
         }
+
+        private void btnWijnToevoegen_Click(object sender, EventArgs e)
+        {
+            //object maken van wijnen
+            Wijnen ToeTeVoegenWijn = new Wijnen()
+            {
+                Code = txtCode.Text,
+                Jaar = txtJaar.Text,
+                Naam = txtNaamWijn.Text,
+                Omschrijving = txtOmschrijving.Text,
+                Groepsnummer = Convert.ToInt16(txtGroepsnummer.Text),
+                Inhoud = txtInhoud.Text,
+                PrijsPerFles = Convert.ToDouble(txtPPF.Text),
+                HoeveelheidPerVerpakking = Convert.ToInt16(txtHoeveelheidPerVerpakking.Text),
+                Voorraad = Convert.ToInt16(txtVoorraad.Text),
+                InBestelling = Convert.ToInt16(txtInBestelling.Text),
+                Bestelpunt = Convert.ToInt16(txtBestelpunt.Text),
+                UitAssortiment = Convert.ToInt16(txtUitAssortiment.Text),
+                Leveranciersnummer = Convert.ToInt16(txtLeveranciersNummer.Text),
+                foto = txtFoto.Text
+            };
+
+            //wijn toevoegen 
+            WijnenDA.VoegWijnToe(ToeTeVoegenWijn);
+
+            //listview opnieuw laden
+            LaadWijnen();
+        }
     }
 }
