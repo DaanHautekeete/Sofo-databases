@@ -50,6 +50,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DA\LeverancierDA.cs" />
+    <Compile Include="DA\WijnenDA.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -58,6 +59,7 @@
     </Compile>
     <Compile Include="Helper\Database.cs" />
     <Compile Include="Model\Leverancier.cs" />
+    <Compile Include="Model\Wijnen.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form1.resx">

@@ -40,6 +40,24 @@ namespace Examen_Apollo
 
         }
 
+        private void LaadWijnen()
+        {
+            //listview legen
+            lsvWijnen.Items.Clear();
+
+            //lijst opmaken voor wijnen
+            List<Wijnen> LijstWijnen = WijnenDA.OphalenWijnen(Convert.ToInt16(txtLevnr.Text));
+
+            foreach(Wijnen wijn in LijstWijnen)
+            {
+                //listviewitem maken
+                ListViewItem item = new ListViewItem(new string[] {wijn.Code.ToString(), wijn.Jaar.ToString(), wijn.Naam, wijn.Omschrijving, wijn.Groepsnummer.ToString(), wijn.Inhoud.ToString(), wijn.PrijsPerFles.ToString(), wijn.HoeveelheidPerVerpakking.ToString(), wijn.Voorraad.ToString(), wijn.InBestelling.ToString(), wijn.Bestelpunt.ToString(), wijn.UitAssortiment.ToString(), wijn.Leveranciersnummer.ToString(), wijn.foto.ToString()});
+
+                item.Tag = wijn;
+                lsvWijnen.Items.Add(item);
+            }
+        }
+
         private void lsvLeveranciers_SelectedIndexChanged(object sender, EventArgs e)
         {
             if(lsvLeveranciers.SelectedItems.Count == 0)
@@ -56,6 +74,9 @@ namespace Examen_Apollo
             txtAdres.Text = gekozenItem.SubItems[2].Text;
             txtPostnr.Text = gekozenItem.SubItems[3].Text;
             txtGemeente.Text = gekozenItem.SubItems[4].Text;
+
+            //wijnen inladen
+            LaadWijnen();
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
