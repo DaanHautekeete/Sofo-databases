@@ -36,6 +36,9 @@ namespace Examen_Apollo
 
                 item.Tag = leverancier;
                 lsvLeveranciers.Items.Add(item);
+
+                //dit is voor een datagrid
+                dataGridView1.Rows.Add(leverancier.leveranciernummer.ToString(), leverancier.firmanaam, leverancier.adres, leverancier.postnr, leverancier.gemeente);
             }
 
         }

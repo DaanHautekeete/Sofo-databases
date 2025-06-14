@@ -94,6 +94,13 @@
             this.Adres = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Postnr = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Gemeente = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.lvnr1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.firmaNaam1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Adres1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PostNR1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Gemeente1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // txtFoto
@@ -603,11 +610,51 @@
             // 
             this.Gemeente.Text = "Gemeente";
             // 
+            // dataGridView1
+            // 
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.lvnr1,
+            this.firmaNaam1,
+            this.Adres1,
+            this.PostNR1,
+            this.Gemeente1});
+            this.dataGridView1.Location = new System.Drawing.Point(12, 529);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(547, 174);
+            this.dataGridView1.TabIndex = 93;
+            // 
+            // lvnr1
+            // 
+            this.lvnr1.HeaderText = "Levnr";
+            this.lvnr1.Name = "lvnr1";
+            // 
+            // firmaNaam1
+            // 
+            this.firmaNaam1.HeaderText = "Firma naam";
+            this.firmaNaam1.Name = "firmaNaam1";
+            // 
+            // Adres1
+            // 
+            this.Adres1.HeaderText = "Adres";
+            this.Adres1.Name = "Adres1";
+            // 
+            // PostNR1
+            // 
+            this.PostNR1.HeaderText = "Postnr";
+            this.PostNR1.Name = "PostNR1";
+            // 
+            // Gemeente1
+            // 
+            this.Gemeente1.HeaderText = "Gemeente";
+            this.Gemeente1.Name = "Gemeente1";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1079, 503);
+            this.ClientSize = new System.Drawing.Size(1079, 740);
+            this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.txtFoto);
             this.Controls.Add(this.label19);
             this.Controls.Add(this.txtLeveranciersNummer);
@@ -658,6 +705,7 @@
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -731,6 +779,12 @@
         private System.Windows.Forms.ColumnHeader Adres;
         private System.Windows.Forms.ColumnHeader Postnr;
         private System.Windows.Forms.ColumnHeader Gemeente;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn lvnr1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn firmaNaam1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Adres1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PostNR1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Gemeente1;
     }
 }
 
