@@ -70,6 +70,54 @@ namespace Examen_Artemis
             
             LeveranciersDA.LeverancierToevoegen(leverancier);
             LaadLeveranciers();
+
+            ResetTextboxenLeverancier();
+        }
+
+        private void btnWijzig_Click(object sender, EventArgs e)
+        {
+            //nieuw object maken van leveranciers
+            Leveranciers leveranciers = new Leveranciers
+            {
+                Leveranciersnummer = Convert.ToInt16(txtLeveranciersnummer.Text),
+                Bedrijf = txtBedrijf.Text,
+                Adres = txtAdres.Text,
+                Plaats = txtPlaats.Text,
+                Postcode = txtPostcode.Text,
+                Land = txtLand.Text,
+                URL = txtURL.Text
+            };
+            
+            //leverancier wijzigen
+            LeveranciersDA.leverancierWijzigen(leveranciers);
+            LaadLeveranciers();
+
+            ResetTextboxenLeverancier();
+        }
+
+        private void ResetTextboxenLeverancier()
+        {
+            txtLeveranciersnummer.Clear();
+            txtBedrijf.Clear();
+            txtAdres.Clear();
+            txtPlaats.Clear();
+            txtPostcode.Clear();
+            txtLand.Clear();
+            txtURL.Clear();
+        }
+
+        private void btnVerwijder_Click(object sender, EventArgs e)
+        {
+            //object aanmaken van leverancier
+            Leveranciers leverancier = new Leveranciers
+            {
+                Leveranciersnummer = Convert.ToInt16(txtLeveranciersnummer.Text)
+            };
+
+            LeveranciersDA.LeverancierVerwijderen(leverancier);
+            LaadLeveranciers();
+
+            ResetTextboxenLeverancier();
         }
     }
 }

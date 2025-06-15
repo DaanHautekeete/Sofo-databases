@@ -234,6 +234,7 @@
             this.btnWijzig.TabIndex = 3;
             this.btnWijzig.Text = "Wijzig";
             this.btnWijzig.UseVisualStyleBackColor = true;
+            this.btnWijzig.Click += new System.EventHandler(this.btnWijzig_Click);
             // 
             // btnVerwijder
             // 
@@ -243,6 +244,7 @@
             this.btnVerwijder.TabIndex = 3;
             this.btnVerwijder.Text = "Verwijder";
             this.btnVerwijder.UseVisualStyleBackColor = true;
+            this.btnVerwijder.Click += new System.EventHandler(this.btnVerwijder_Click);
             // 
             // frmLeveranciersProducten
             // 

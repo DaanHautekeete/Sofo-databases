@@ -69,6 +69,52 @@ namespace Examen_Artemis.DA
             conn.Close();
         }
 
+        public static void leverancierWijzigen(Leveranciers leverancier)
+        {
+            //connectie maken met DB
+            MySqlConnection conn = Database.Maakverbinding();
+
+            //query opstellen
+            string query = "UPDATE tblleveranciers SET Bedrijf = @bedrijf, Adres = @adres, Plaats = @plaats, Postcode = @postcode, Land = @land, URL = @url WHERE Leveranciersnummer = @leveranciersnummer";
+
+            //commando opstellen 
+            MySqlCommand cmd = new MySqlCommand(query, conn);
+
+            //parameters instellen
+            cmd.Parameters.AddWithValue("@bedrijf", leverancier.Bedrijf);
+            cmd.Parameters.AddWithValue("@adres", leverancier.Adres);
+            cmd.Parameters.AddWithValue("@plaats", leverancier.Plaats);
+            cmd.Parameters.AddWithValue("@postcode", leverancier.Postcode);
+            cmd.Parameters.AddWithValue("@land", leverancier.Land);
+            cmd.Parameters.AddWithValue("@url", leverancier.URL);
+            cmd.Parameters.AddWithValue("@leveranciersnummer", leverancier.Leveranciersnummer);
+
+            //commando uitvoeren 
+            cmd.ExecuteNonQuery();
+
+            //connectie sluiten
+            conn.Close();
+        }
+
+        public static void LeverancierVerwijderen(Leveranciers leverancier)
+        {
+            //connectie maken met DB
+            MySqlConnection conn = Database.Maakverbinding();
+
+            //query opstellen
+            string query = "DELETE FROM tblleveranciers WHERE Leveranciersnummer = @leveranciersnummer";
+
+            MySqlCommand cmd = new MySqlCommand(query, conn);
+
+            //parameters instellen
+            cmd.Parameters.AddWithValue("@leveranciersnummer", leverancier.Leveranciersnummer);
+
+            //commando uitvoeren
+            cmd.ExecuteNonQuery();
+
+            conn.Close();
+        }
+
         public static Leveranciers Create(IDataRecord record)
         {
             return new Leveranciers
