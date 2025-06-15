@@ -53,6 +53,19 @@
             this.btnVoegToe = new System.Windows.Forms.Button();
             this.btnWijzig = new System.Windows.Forms.Button();
             this.btnVerwijder = new System.Windows.Forms.Button();
+            this.lsvProducten = new System.Windows.Forms.ListView();
+            this.Productnummer = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.LeveranciersnummerProduct = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.CategorieNummer = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Productnaam = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.NederlandseNaam = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.HoeveelheidPerEenheid = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.PrijsPerEenheid = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Voorraad = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.BTWCode = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.InBestelling = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Bestelpunt = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.UitAssortiment = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.SuspendLayout();
             // 
             // lsvLeveranciers
@@ -246,11 +259,83 @@
             this.btnVerwijder.UseVisualStyleBackColor = true;
             this.btnVerwijder.Click += new System.EventHandler(this.btnVerwijder_Click);
             // 
+            // lsvProducten
+            // 
+            this.lsvProducten.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.Productnummer,
+            this.LeveranciersnummerProduct,
+            this.CategorieNummer,
+            this.Productnaam,
+            this.NederlandseNaam,
+            this.HoeveelheidPerEenheid,
+            this.PrijsPerEenheid,
+            this.Voorraad,
+            this.BTWCode,
+            this.InBestelling,
+            this.Bestelpunt,
+            this.UitAssortiment});
+            this.lsvProducten.HideSelection = false;
+            this.lsvProducten.Location = new System.Drawing.Point(455, 13);
+            this.lsvProducten.Name = "lsvProducten";
+            this.lsvProducten.Size = new System.Drawing.Size(421, 201);
+            this.lsvProducten.TabIndex = 4;
+            this.lsvProducten.UseCompatibleStateImageBehavior = false;
+            this.lsvProducten.View = System.Windows.Forms.View.Details;
+            // 
+            // Productnummer
+            // 
+            this.Productnummer.Text = "Productnummer";
+            // 
+            // LeveranciersnummerProduct
+            // 
+            this.LeveranciersnummerProduct.Text = "Leveranciersnummer";
+            // 
+            // CategorieNummer
+            // 
+            this.CategorieNummer.Text = "Categorienummer";
+            // 
+            // Productnaam
+            // 
+            this.Productnaam.Text = "Productnaam";
+            // 
+            // NederlandseNaam
+            // 
+            this.NederlandseNaam.Text = "NederlandseNaam";
+            // 
+            // HoeveelheidPerEenheid
+            // 
+            this.HoeveelheidPerEenheid.Text = "HoeveelheidPerEenheid";
+            // 
+            // PrijsPerEenheid
+            // 
+            this.PrijsPerEenheid.Text = "PrijsPerEenheid";
+            // 
+            // Voorraad
+            // 
+            this.Voorraad.Text = "Voorraad";
+            // 
+            // BTWCode
+            // 
+            this.BTWCode.Text = "BTWCode";
+            // 
+            // InBestelling
+            // 
+            this.InBestelling.Text = "InBestelling";
+            // 
+            // Bestelpunt
+            // 
+            this.Bestelpunt.Text = "Bestelpunt";
+            // 
+            // UitAssortiment
+            // 
+            this.UitAssortiment.Text = "UitAssortiment";
+            // 
             // frmLeveranciersProducten
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(887, 450);
+            this.Controls.Add(this.lsvProducten);
             this.Controls.Add(this.btnVerwijder);
             this.Controls.Add(this.btnWijzig);
             this.Controls.Add(this.btnVoegToe);
@@ -304,6 +389,19 @@
         private System.Windows.Forms.Button btnVoegToe;
         private System.Windows.Forms.Button btnWijzig;
         private System.Windows.Forms.Button btnVerwijder;
+        private System.Windows.Forms.ListView lsvProducten;
+        private System.Windows.Forms.ColumnHeader Productnummer;
+        private System.Windows.Forms.ColumnHeader LeveranciersnummerProduct;
+        private System.Windows.Forms.ColumnHeader CategorieNummer;
+        private System.Windows.Forms.ColumnHeader Productnaam;
+        private System.Windows.Forms.ColumnHeader NederlandseNaam;
+        private System.Windows.Forms.ColumnHeader HoeveelheidPerEenheid;
+        private System.Windows.Forms.ColumnHeader PrijsPerEenheid;
+        private System.Windows.Forms.ColumnHeader Voorraad;
+        private System.Windows.Forms.ColumnHeader BTWCode;
+        private System.Windows.Forms.ColumnHeader InBestelling;
+        private System.Windows.Forms.ColumnHeader Bestelpunt;
+        private System.Windows.Forms.ColumnHeader UitAssortiment;
     }
 }
 

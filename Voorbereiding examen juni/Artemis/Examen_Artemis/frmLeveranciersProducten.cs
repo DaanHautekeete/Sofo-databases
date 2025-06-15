@@ -39,6 +39,20 @@ namespace Examen_Artemis
             }
         }
 
+        private void LaadProducten()
+        {
+            lsvProducten.Items.Clear();
+
+            foreach(Producten product in ProductenDA.ProductenOphalen(Convert.ToInt16(txtLeveranciersnummer.Text)))
+            {
+                //listviewitem maken 
+                ListViewItem item = new ListViewItem(new string[] { product.Productnummer.ToString(), product.Leveranciersnummer.ToString(), product.CategorieNummer.ToString(), product.NederlandseNaam, product.HoeveelheidPerEenheid, product.PrijsPerEenheid.ToString(), product.Voorraad.ToString(), product.BTWCode.ToString(), product.InBestelling.ToString(), product.Bestelpunt.ToString(), product.UitAssortiment.ToString() });
+
+                item.Tag = product;
+                lsvProducten.Items.Add(item);
+            }
+        }
+
         private void lsvLeveranciers_SelectedIndexChanged(object sender, EventArgs e)
         {
             if(lsvLeveranciers.SelectedItems.Count == 0) { return; }
@@ -53,6 +67,9 @@ namespace Examen_Artemis
             txtPostcode.Text = GekozenItem.SubItems[4].Text;
             txtLand.Text = GekozenItem.SubItems[5].Text;
             txtURL.Text = GekozenItem.SubItems[6].Text;
+
+
+            LaadProducten();
         }
 
         private void btnVoegToe_Click(object sender, EventArgs e)
